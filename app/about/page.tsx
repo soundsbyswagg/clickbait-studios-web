@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ProcessWalkthrough } from '@/components/credibility/ProcessWalkthrough';
 
 export default function AboutPage() {
   return (
@@ -20,6 +21,8 @@ export default function AboutPage() {
           </ul>
         </div>
       </div>
+
+      <ProcessWalkthrough />
 
       <div className="mt-10">
         <Link href="/contact" className="underline">Work with us</Link>
