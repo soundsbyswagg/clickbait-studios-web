@@ -4,6 +4,7 @@ import { Manrope, Space_Grotesk } from 'next/font/google';
 import { SmoothScroll } from '@/components/motion/SmoothScroll';
 import { MotionProvider } from '@/components/motion/MotionProvider';
 import { MobileMenu } from '@/components/navigation/MobileMenu';
+import { PageShell } from '@/components/layout/PageShell';
 import Cursor from '@/components/ui/Cursor';
 import Loader from '@/components/ui/Loader';
 import { ContactStrip } from '@/components/layout/ContactStrip';
@@ -105,7 +106,9 @@ export default function RootLayout({
         </header>
         <SmoothScroll>
           <MotionProvider>
-            <main id="main">{children}</main>
+            <PageShell>
+              <main id="main">{children}</main>
+            </PageShell>
           </MotionProvider>
         </SmoothScroll>
         <BookingBar />

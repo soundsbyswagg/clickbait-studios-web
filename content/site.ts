@@ -99,6 +99,14 @@ export const site = {
   moreThanRap,
   bookingBaseUrl: siteConfig.bookingBaseUrl,
   portfolioItems: [] as z.infer<typeof PortfolioItemSchema>[],
+  pageThemes: {
+    '/': { accent: 'accent', media: 'hero' },
+    '/rooms': { accent: 'muted', media: 'room' },
+    '/services': { accent: 'foreground', media: 'service' },
+    '/portfolio': { accent: 'accent', media: 'work' },
+    '/more-than-rap': { accent: 'foreground', media: 'program' },
+    '/contact': { accent: 'accent', media: 'contact' },
+  },
 };
 
 SiteSchema.parse(site); // Runtime validation at import time
