@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Manrope, Space_Grotesk } from 'next/font/google';
+import { SmoothScroll } from '@/components/motion/SmoothScroll';
+import { ContactStrip } from '@/components/layout/ContactStrip';
+import { BookingBar } from '@/components/layout/BookingBar';
 import './globals.css';
 import { siteConfig, navigation } from '@/content/site';
-import { SmoothScroll } from '@/components/motion/SmoothScroll';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -19,10 +21,6 @@ const spaceGrotesk = Space_Grotesk({
 
 const primaryNavigation = navigation.filter((item) =>
   ['Services', 'Rooms', 'More Than Rap', 'About'].includes(item.label),
-);
-
-const footerNavigation = navigation.filter((item) =>
-  ['Work', 'Creators Club', 'FAQ', 'Contact'].includes(item.label),
 );
 
 export const metadata: Metadata = {
@@ -100,21 +98,8 @@ export default function RootLayout({
         <SmoothScroll>
           <main id="main">{children}</main>
         </SmoothScroll>
-        <footer className="border-t py-8 text-sm text-neutral-500" role="contentinfo">
-          <div className="container grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
-            <div>
-              <p>{siteConfig.address} • {siteConfig.links.phone} • <a href={siteConfig.links.instagram} className="hover:underline" target="_blank" rel="noopener noreferrer">Instagram</a></p>
-              <p className="mt-1">© {new Date().getFullYear()} Clickbait ENT. All rights reserved.</p>
-            </div>
-            <nav className="flex flex-wrap gap-x-5 gap-y-2" aria-label="Footer navigation">
-              {footerNavigation.map((item) => (
-                <Link className="hover:text-black hover:underline" href={item.href} key={item.href}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </footer>
+        <BookingBar />
+        <ContactStrip />
       </body>
     </html>
   );
