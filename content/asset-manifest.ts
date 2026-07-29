@@ -1,0 +1,48 @@
+export const assetManifest = [
+  {
+    id: 'hero-poster',
+    source: 'client-supplied',
+    owner: 'Clickbait ENT',
+    permission: 'client-approved',
+    orientation: 'landscape',
+    intendedRoute: '/',
+    altText: 'Studio interior',
+    cropNotes: '16:9 cover image',
+    replacementNeed: 'Required for production',
+  },
+  {
+    id: 'room-a',
+    source: 'client-supplied',
+    owner: 'Clickbait ENT',
+    permission: 'pending',
+    orientation: 'landscape',
+    intendedRoute: '/rooms',
+    altText: 'A Room',
+    cropNotes: '4:3 interior',
+    replacementNeed: 'Required for production',
+  },
+  {
+    id: 'room-b',
+    source: 'client-supplied',
+    owner: 'Clickbait ENT',
+    permission: 'pending',
+    orientation: 'landscape',
+    intendedRoute: '/rooms',
+    altText: 'B Room',
+    cropNotes: '4:3 interior',
+    replacementNeed: 'Required for production',
+  },
+  {
+    id: 'og-home',
+    source: 'client-supplied',
+    owner: 'Clickbait ENT',
+    permission: 'client-approved',
+    orientation: 'landscape',
+    intendedRoute: '/',
+    altText: 'Clickbait ENT open graph image',
+    cropNotes: '1200x630',
+    replacementNeed: 'Required for production',
+  },
+];
+
+export type AssetManifestItem = typeof assetManifest[number];
