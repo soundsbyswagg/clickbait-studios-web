@@ -1,210 +1,95 @@
-'use client';
-
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import HeroMedia from '@/components/hero/HeroMedia';
-import { SplitText } from '@/components/hero/SplitText';
-import { services, rooms, moreThanRap } from '@/content/site';
-import { MOTION } from '@/lib/motion';
+import { services, rooms, moreThanRap, siteConfig } from '@/content/site';
+import { BOOKING_URL, externalLinkProps, inquiryRoutes } from '@/lib/routes';
 import { ServiceCard } from '@/components/services/ServiceCard';
-import { NavIndicator } from '@/components/navigation/NavIndicator';
 import { IntentRouter } from '@/components/home/IntentRouter';
 
-const tickerItems = [
-  'Record in Atlanta',
-  'Engineer-assisted sessions',
-  'Solo room access',
-  'Podcast and content',
-  'Finish the record',
-];
+const tickerItems = ['Record in Atlanta', 'Engineering support', 'A Room', 'B Room', 'Podcast and content', 'Finish your project'];
 
 export default function Home() {
   return (
-    <main className="overflow-hidden">
-      <HeroMedia />
-
-      <section className="relative min-h-[78vh] flex items-center border-b py-20 md:py-28">
-        <div className="container">
+    <div className="overflow-hidden">
+      <section className="relative flex min-h-[70svh] items-center border-b border-border py-20 md:min-h-[78vh] md:py-28">
+        <HeroMedia />
+        <div className="container relative z-10">
           <div className="max-w-4xl">
-            <SplitText delay={0.4} className="text-sm uppercase tracking-[3px] text-muted mb-5">
-              Atlanta • 24/7 Booking
-            </SplitText>
-
-            <div className="overflow-hidden">
-              <motion.h1
-                className="text-[clamp(3.75rem,11vw,7.5rem)] font-semibold tracking-[-0.065em] leading-[0.82] mb-8"
-                initial={{ y: 40 }}
-                animate={{ y: 0 }}
-                transition={{ duration: MOTION.slow, ease: MOTION.easing }}
-              >
-                <SplitText delay={0.55} duration={1} stagger={0.06}>
-                  BOOK THE ROOM.<br />FINISH THE RECORD.
-                </SplitText>
-              </motion.h1>
-            </div>
-
-            <motion.p
-              className="text-lg md:text-xl text-muted max-w-xl mb-9 leading-relaxed"
-              initial={{ y: 24 }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.12, duration: MOTION.normal, ease: MOTION.easing }}
-            >
-              Engineer-assisted sessions. Solo rooms. Podcast and video. The More Than Rap program.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-wrap gap-4"
-              initial={{ y: 24 }}
-              animate={{ y: 0 }}
-              transition={{ delay: 0.2, duration: MOTION.normal, ease: MOTION.easing }}
-            >
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-black px-8 py-4 text-base font-medium text-white hover:bg-card hover:-translate-y-1 motion-normal"
-              >
+            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-muted">Atlanta • Advance booking</p>
+            <h1 className="mb-7 max-w-4xl text-[clamp(3rem,9vw,7rem)] font-semibold leading-[0.92] tracking-[-0.06em]">
+              Atlanta Studio Time Built Around Your Work
+            </h1>
+            <p className="mb-9 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+              Record, create, and develop your next project with professional studio space, engineering support, and creative services from Clickbait ENT.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link href={BOOKING_URL} {...externalLinkProps} className="inline-flex min-h-11 items-center rounded-md bg-accent px-7 font-semibold text-accent-foreground">
                 Book a Session
               </Link>
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center rounded-md border border-border px-8 py-4 text-base font-medium hover:border-black hover:-translate-y-1 motion-normal"
-              >
-                Explore Services
+              <Link href="/contact" className="inline-flex min-h-11 items-center rounded-md border border-border bg-card px-7 font-semibold text-foreground">
+                Ask About Your Project
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       <IntentRouter />
 
-      <section className="border-b border-border bg-card py-4">
-        <div className="container">
-          <NavIndicator />
-        </div>
-      </section>
-
       <section className="ticker" aria-label="Studio highlights">
         <div className="ticker-track">
           {[0, 1].map((group) => (
             <div className="ticker-group" aria-hidden={group === 1} key={group}>
-              {tickerItems.map((item) => (
-                <span className="contents" key={item}>
-                  <span>{item}</span>
-                  <span className="ticker-dot" />
-                </span>
-              ))}
+              {tickerItems.map((item) => <span key={item}>{item} •</span>)}
             </div>
           ))}
         </div>
       </section>
 
-      <section className="border-b py-6 bg-card text-foreground">
-        <div className="container grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          {['24-hour booking by advance reservation', 'Engineer or solo options', 'Podcast & content room', 'Free parking • Atlanta'].map((text, index) => (
-            <div key={index} className="flex items-center gap-2">
-              <div className="h-1 w-1 bg-black rounded-full" />
-              {text}
-            </div>
-          ))}
+      <section className="border-b border-border bg-card py-6">
+        <div className="container grid gap-4 text-sm text-foreground sm:grid-cols-2 lg:grid-cols-4">
+          <p>Sessions around the clock with advance booking</p>
+          <p>Book at least four hours ahead</p>
+          <p>Free parking in Atlanta</p>
+          <p>Walk-ins 8:00 AM–5:00 PM</p>
         </div>
       </section>
 
-      <section className="container py-20 md:py-28 border-b">
-        <motion.h2
-          className="text-4xl md:text-6xl tracking-[-0.04em] mb-10 animate-pop-in"
-          initial={{ y: 28 }}
-          whileInView={{ y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: MOTION.normal, ease: MOTION.easing }}
-        >
-          Choose your room
-        </motion.h2>
-        <p className="section-label text-muted mb-6">Rooms</p>
-        <div className="grid md:grid-cols-2 gap-6">
-          {rooms.map((room, index) => (
-            <motion.div
-              key={room.name}
-              className="studio-card border border-border p-7 md:p-10 rounded-lg"
-              initial={{ y: 20 }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ delay: index * MOTION.stagger, duration: MOTION.normal }}
-            >
-              <div className="uppercase text-xs tracking-widest text-muted mb-2">Room</div>
-              <div className="text-xs uppercase tracking-widest text-muted mb-2">{room.name.toUpperCase()}</div>
-              <h3 className="text-3xl tracking-tight mb-2">{room.capacity}</h3>
-              <p className="text-muted mb-6">{room.note}</p>
-              <Link href="/contact" className="text-sm font-medium underline">Book {room.name}</Link>
-            </motion.div>
+      <section className="container border-b border-border py-20 md:py-28">
+        <p className="section-label mb-4 text-muted">Choose your room</p>
+        <h2 className="mb-10 text-4xl tracking-[-0.04em] md:text-6xl">Space that fits the session</h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          {rooms.map((room) => (
+            <article key={room.name} className="studio-card rounded-lg border border-border bg-card p-7 md:p-10">
+              <p className="mb-2 text-xs uppercase tracking-widest text-muted">{room.name}</p>
+              <h3 className="mb-3 text-3xl tracking-tight">{room.capacity}</h3>
+              <p className="mb-6 text-muted">{room.note}</p>
+              <Link href={BOOKING_URL} {...externalLinkProps} className="font-semibold underline">Book {room.name}</Link>
+            </article>
           ))}
         </div>
       </section>
 
       <section className="container py-20 md:py-28">
-        <motion.h2
-          className="text-4xl md:text-6xl tracking-[-0.04em] mb-10"
-          initial={{ y: 28 }}
-          whileInView={{ y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: MOTION.normal, ease: MOTION.easing }}
-        >
-          Priority services
-        </motion.h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {services.slice(0, 3).map((service) => (
-            <ServiceCard key={service.slug} service={service} />
-          ))}
-        </div>
-        <div className="mt-8">
-          <Link href="/services" className="text-sm underline">See all services</Link>
+        <h2 className="mb-10 text-4xl tracking-[-0.04em] md:text-6xl">Choose a service</h2>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {services.slice(0, 3).map((service) => <ServiceCard key={service.slug} service={service} />)}
         </div>
       </section>
 
-      <section className="bg-black text-white py-20 md:py-28">
-        <div className="container">
-          <motion.div
-            className="max-w-2xl"
-            initial={{ x: -36 }}
-            whileInView={{ x: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: MOTION.slow, ease: MOTION.easing }}
-          >
-            <div className="uppercase text-xs tracking-[2px] mb-2 text-white/60">Curriculum Program</div>
-            <h2 className="text-5xl md:text-7xl tracking-[-0.055em] mb-6">{moreThanRap.name}</h2>
-            <p className="text-white/80 mb-4">{moreThanRap.schedule}</p>
-            <p className="mb-4">Instructors: {moreThanRap.instructors.join(' + ')}</p>
-            <ul className="mb-6 text-sm space-y-1">
-              {moreThanRap.deliverables.map((d, i) => <li key={i}>• {d}</li>)}
-            </ul>
-            <Link href="/more-than-rap" className="inline-block bg-white text-black px-6 py-3 text-sm font-medium rounded">Learn about the program</Link>
-          </motion.div>
+      <section className="bg-card py-20 text-foreground md:py-28">
+        <div className="container max-w-3xl">
+          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-muted">Youth creative development</p>
+          <h2 className="mb-5 text-5xl tracking-[-0.055em] md:text-7xl">{moreThanRap.name}</h2>
+          <p className="mb-2 text-muted">{moreThanRap.ages} • {moreThanRap.schedule}</p>
+          <p className="mb-7 text-muted">Structured assignments and exposure to recording, production, performance, branding, marketing, and entrepreneurship.</p>
+          <Link href={inquiryRoutes.moreThanRap} className="inline-flex min-h-11 items-center rounded-md bg-accent px-6 font-semibold text-accent-foreground">Ask about the program</Link>
         </div>
       </section>
 
-      <section className="border-y bg-card text-white py-10 md:py-16 overflow-hidden" aria-hidden="true">
-        <motion.div
-          className="text-[clamp(4rem,13vw,12rem)] whitespace-nowrap leading-none font-semibold tracking-[-0.07em] opacity-20"
-          initial={{ x: '8%' }}
-          whileInView={{ x: '-18%' }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 1.4, ease: MOTION.easing }}
-        >
-          RECORD. CREATE. RELEASE. RECORD.
-        </motion.div>
+      <section className="container py-24 text-center md:py-32">
+        <h2 className="mb-6 text-5xl tracking-[-0.055em] md:text-7xl">Ready to record?</h2>
+        <Link href={siteConfig.bookingBaseUrl} {...externalLinkProps} className="text-lg font-semibold underline">Book a Session →</Link>
       </section>
-
-      <section className="container py-24 md:py-32 text-center">
-        <motion.h2
-          className="text-5xl md:text-7xl tracking-[-0.055em] mb-6"
-          initial={{ scale: 0.96 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: MOTION.normal, ease: MOTION.easing }}
-        >
-          Ready to record?
-        </motion.h2>
-        <Link href="/contact" className="text-lg underline">Book a Session →</Link>
-      </section>
-    </main>
+    </div>
   );
 }

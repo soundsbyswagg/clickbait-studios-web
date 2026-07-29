@@ -1,57 +1,56 @@
 import { z } from 'zod';
 import { SiteSchema, PortfolioItemSchema } from '@/lib/schemas';
+import { BOOKING_URL } from '@/lib/routes';
 
 export const siteConfig = {
   name: 'Clickbait ENT',
-  description: 'Atlanta recording built around the session. Engineer-assisted sessions, solo rooms, podcast/video, and the More Than Rap program.',
-  url: 'https://clickbaitent.com',
-  ogImage: '/og.jpg',
-  heroPoster: '/hero-poster.jpg',
+  umbrellaName: 'Clickbait Enterprise',
+  description: 'Professional studio space, engineering support, and creative services from Clickbait ENT in Atlanta.',
+  url: 'https://clickbait-studios-web.vercel.app',
   links: {
     instagram: 'https://www.instagram.com/clickbait.ent/',
     phone: '470-621-1417',
   },
-  address: '1587 Phoenix Boulevard, Suite 5, Atlanta, Georgia 30349',
-  hours: 'Walk-ins 8:00 AM – 5:00 PM. 24-hour booking by advance reservation.',
-  bookingBaseUrl: 'https://www.clickbaitent.com/book-online',
-  email: 'bookings@clickbaitent.com', // LAUNCH BLOCKER - verify domain email exists
+  address: '1587 Phoenix Boulevard, Suite 5, Atlanta, GA 30349',
+  hours: 'Sessions are available around the clock with advance booking. Please book at least four hours before your requested start time. Walk-ins are accepted from 8:00 AM to 5:00 PM.',
+  bookingBaseUrl: BOOKING_URL,
 };
 
 export const services = [
   {
     slug: 'engineer-assisted',
-    title: 'Engineer-Assisted Recording Sessions',
-    description: 'Professional engineer support in A or B Room.',
-    startingPrice: 'From $100 (3hr min)',
-    duration: '2-8 hours',
-    cta: 'Book Engineer Session',
-    wixUrl: 'https://www.clickbaitent.com/book-online',
+    title: 'Engineer-Assisted Recording Session',
+    description: 'Standard in-session engineering support in A Room or B Room.',
+    startingPrice: '$100 base session',
+    duration: 'Three-hour minimum',
+    cta: 'Book an Engineer-Assisted Session',
+    wixUrl: BOOKING_URL,
   },
   {
     slug: 'solo',
-    title: 'Solo Session (No Engineer)',
-    description: 'Self-serve studio time.',
-    startingPrice: 'From $100 (3hr min)',
-    duration: '2-8 hours',
-    cta: 'Book Solo Session',
-    wixUrl: 'https://www.clickbaitent.com/book-online',
+    title: 'Studio Rental Without an Engineer',
+    description: 'Studio time for clients who do not need in-session engineering support.',
+    startingPrice: '$100 base session',
+    duration: 'Three-hour minimum',
+    cta: 'Book Studio Time',
+    wixUrl: BOOKING_URL,
   },
   {
     slug: 'podcast',
-    title: 'Podcast / Content Room',
-    description: 'Dedicated room for podcasts and content creation.',
-    startingPrice: 'From $100 (3hr min)',
-    duration: '1-8 hours',
-    cta: 'Book Podcast Room',
-    wixUrl: 'https://www.clickbaitent.com/book-online',
+    title: 'Podcast and Content Production',
+    description: 'A custom inquiry path for podcast and content-room projects.',
+    startingPrice: 'Custom quote',
+    duration: 'Start with a consultation',
+    cta: 'Ask About Podcast Production',
+    wixUrl: undefined,
   },
   {
     slug: 'consultation',
     title: 'Consultation',
-    description: 'Strategy, production planning, or artist development.',
-    startingPrice: 'From $50',
-    duration: '1 hour',
-    cta: 'Book Consultation',
+    description: 'Discuss strategy, production planning, artist development, or custom work.',
+    startingPrice: 'Custom quote',
+    duration: 'Start with a consultation',
+    cta: 'Request a Consultation',
     wixUrl: undefined,
   },
 ];
@@ -59,24 +58,27 @@ export const services = [
 export const rooms = [
   {
     name: 'A Room' as const,
-    capacity: 'Up to 6 guests',
-    note: 'Larger space for teams and group sessions. Same equipment as B Room. VERIFY exact differences with client.',
-    equipment: 'Same equipment' as const,
+    capacity: 'Maximum capacity: 6 guests',
+    note: 'Large recording room with the same core equipment as B Room. Best for larger groups, collaborative sessions, teams, and clients who need more space.',
+    equipment: 'Same core equipment' as const,
   },
   {
     name: 'B Room' as const,
-    capacity: 'Up to 3 guests',
-    note: 'Intimate room. Same equipment as A Room. VERIFY exact differences with client.',
-    equipment: 'Same equipment' as const,
+    capacity: 'Maximum capacity: 3 guests',
+    note: 'Small recording room with the same core equipment as A Room. Best for solo artists, small teams, and compact sessions.',
+    equipment: 'Same core equipment' as const,
   },
 ];
 
 export const moreThanRap = {
   name: 'More Than Rap' as const,
+  ages: 'Ages 4–15',
   schedule: 'Monday through Wednesday, 10:00 AM to 4:00 PM',
-  instructors: ['The Clickbait founder', 'Arielle Long'],
-  deliverables: ['A completed beat', 'A completed song', 'A larger completed body of work'],
-  award: 'The program leader or highest-performing participant may receive a three-hour recording block.',
+  options: ['Early-arrival option', 'Late-departure option'],
+  instructors: ['The Clickbait owner', 'Arielle Long', 'Special guest instructors and creative professionals'],
+  curriculum: ['Recording', 'Production', 'Performance', 'Branding', 'Marketing', 'Entrepreneurship'],
+  deliverables: ['Graded creative assignments', 'A complete beat', 'A complete song', 'A larger body of creative work'],
+  award: 'The program leader or top participant receives a three-hour recording block.',
 };
 
 export const navigation = [
@@ -93,20 +95,12 @@ export const navigation = [
 
 export const site = {
   brand: { name: siteConfig.name, description: siteConfig.description },
-  contact: { phone: siteConfig.links.phone, instagram: siteConfig.links.instagram, address: siteConfig.address, email: siteConfig.email },
+  contact: { phone: siteConfig.links.phone, instagram: siteConfig.links.instagram, address: siteConfig.address },
   services,
   rooms,
   moreThanRap,
   bookingBaseUrl: siteConfig.bookingBaseUrl,
   portfolioItems: [] as z.infer<typeof PortfolioItemSchema>[],
-  pageThemes: {
-    '/': { accent: 'accent', media: 'hero' },
-    '/rooms': { accent: 'muted', media: 'room' },
-    '/services': { accent: 'foreground', media: 'service' },
-    '/portfolio': { accent: 'accent', media: 'work' },
-    '/more-than-rap': { accent: 'foreground', media: 'program' },
-    '/contact': { accent: 'accent', media: 'contact' },
-  },
 };
 
-SiteSchema.parse(site); // Runtime validation at import time
+SiteSchema.parse(site);

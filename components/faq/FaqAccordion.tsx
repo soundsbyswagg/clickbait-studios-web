@@ -5,73 +5,54 @@ import Link from 'next/link';
 
 const faqGroups = [
   {
-    intent: 'First-Time Artist',
-    icon: '🎤',
+    intent: 'Studio sessions',
     questions: [
-      { q: 'What should I bring to my first session?', a: 'Bring reference tracks in WAV or MP3, any required gear, and a valid ID. Arrive 15 minutes early.' },
-      { q: 'Do I need an engineer?', a: 'Engineer-assisted sessions are available. Solo sessions are self-serve.' },
+      { q: 'How far ahead should I book?', a: 'Book at least four hours before your requested start time. Sessions are available around the clock with advance booking.' },
+      { q: 'What happens if I arrive late?', a: 'Customers have a 15-minute lateness window. Booked time is not automatically extended because of late arrival.' },
+      { q: 'What is included in the base session?', a: 'The $100 base session has a three-hour minimum and includes standard in-session engineering support.' },
     ],
   },
   {
-    intent: 'Podcast Creator',
-    icon: '🎙️',
+    intent: 'Rooms and access',
     questions: [
-      { q: 'What equipment is in the podcast room?', a: 'Professional microphones, headphones, and a dedicated content room for recording.' },
-      { q: 'Can I bring guests?', a: 'Yes, subject to room capacity. Podcast room holds up to 3 guests.' },
+      { q: 'What is the difference between the rooms?', a: 'A Room holds up to 6 guests and offers more space. B Room holds up to 3 guests. Both use the same core equipment.' },
+      { q: 'Is parking available?', a: 'Yes. Free parking is available.' },
+      { q: 'Can I walk in?', a: 'Walk-ins are accepted from 8:00 AM to 5:00 PM.' },
     ],
   },
   {
     intent: 'More Than Rap',
-    icon: '🎓',
     questions: [
-      { q: 'What is More Than Rap?', a: 'A curriculum-based youth creative program. Contact us for age eligibility and enrollment details.' },
-      { q: 'When does it meet?', a: 'Monday through Wednesday, 10:00 AM to 4:00 PM.' },
+      { q: 'Who is the program for?', a: 'More Than Rap is a supervised youth creative-development curriculum for ages 4 through 15.' },
+      { q: 'When does it meet?', a: 'Monday through Wednesday from 10:00 AM to 4:00 PM, with early-arrival and late-departure options.' },
     ],
   },
 ];
 
-function FaqAccordion({ items }: { items: { q: string; a: string }[] }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  return (
-    <div className="space-y-3">
-      {items.map((item, i) => (
-        <div key={i} className="border border-border rounded-lg">
-          <button
-            type="button"
-            className="w-full flex items-center justify-between p-4 text-left"
-            onClick={() => setOpenIndex(openIndex === i ? null : i)}
-            aria-expanded={openIndex === i}
-          >
-            <span className="font-medium text-sm">{item.q}</span>
-            <span className="text-muted text-xs">{openIndex === i ? '−' : '+'}</span>
-          </button>
-          {openIndex === i && (
-            <div className="px-4 pb-4 text-sm text-muted" role="region">
-              {item.a}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export function FaqByIntent() {
+  const [open, setOpen] = useState<string | null>(null);
   return (
-    <section className="container py-20 md:py-28">
-      <h2 className="text-4xl md:text-6xl tracking-[-0.04em] mb-10">Frequently Asked Questions</h2>
+    <section className="container py-12 md:py-20">
+      <h1 className="mb-10 text-5xl tracking-tight md:text-6xl">Frequently Asked Questions</h1>
       <div className="space-y-12">
         {faqGroups.map((group) => (
-          <div key={group.intent}>
-            <h3 className="text-xl font-semibold mb-1">{group.icon} {group.intent}</h3>
-            <FaqAccordion items={group.questions} />
-          </div>
+          <section key={group.intent}>
+            <h2 className="mb-4 text-2xl font-semibold">{group.intent}</h2>
+            <div className="space-y-3">
+              {group.questions.map((item) => {
+                const id = `${group.intent}-${item.q}`;
+                return <div key={id} className="rounded-lg border border-border bg-card">
+                  <button type="button" className="flex min-h-11 w-full items-center justify-between p-4 text-left" onClick={() => setOpen(open === id ? null : id)} aria-expanded={open === id}>
+                    <span className="font-semibold">{item.q}</span><span aria-hidden="true">{open === id ? '−' : '+'}</span>
+                  </button>
+                  {open === id && <p className="px-4 pb-4 text-muted">{item.a}</p>}
+                </div>;
+              })}
+            </div>
+          </section>
         ))}
       </div>
-      <div className="mt-10 text-sm">
-        <Link href="/contact" className="underline">Still have questions? Contact us</Link>
-      </div>
+      <Link href="/contact" className="mt-10 inline-flex min-h-11 items-center font-semibold underline">Still have a question?</Link>
     </section>
   );
 }

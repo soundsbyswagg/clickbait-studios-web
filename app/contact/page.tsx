@@ -1,31 +1,36 @@
 import type { Metadata } from 'next';
-import { ContactForm } from '@/components/contact/ContactForm';
 import { ContactSidebar } from '@/components/contact/ContactSidebar';
-import { SessionPrep } from '@/components/prepare/SessionPrep';
 import { PolicySummary } from '@/components/policies/PolicySummary';
 
 export const metadata: Metadata = {
   title: 'Contact | Clickbait ENT',
-  description: 'Book a session or inquire about recording, production, podcast, or the More Than Rap program at Clickbait ENT in Atlanta.',
+  description: 'Book a session or contact Clickbait ENT by phone or Instagram.',
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ topic?: string }>;
+}) {
+  const { topic } = await searchParams;
   return (
-    <main>
-      <section className="container py-12">
-        <h1 className="text-5xl tracking-tight mb-4">Contact Clickbait ENT</h1>
-        <p className="text-xl text-muted mb-10 max-w-2xl">
-          Questions about sessions, the More Than Rap program, or studio availability.
-        </p>
-
-        <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
-          <ContactForm />
-          <ContactSidebar />
-        </div>
-
-        <SessionPrep />
+    <div className="container py-12 md:py-20">
+      <h1 className="mb-4 text-5xl tracking-tight md:text-6xl">Contact Clickbait ENT</h1>
+      <p className="mb-10 max-w-2xl text-xl text-muted">
+        {topic ? `Ask us about ${topic}. ` : ''}For custom work, call or message us on Instagram with your project type, preferred timing, and group size.
+      </p>
+      <div className="grid gap-10 lg:grid-cols-[1fr_22rem]">
+        <section className="rounded-lg border border-border bg-card p-7">
+          <h2 className="mb-4 text-3xl font-semibold">Custom project inquiry</h2>
+          <p className="mb-5 text-muted">There is no online inquiry form at this time. Use phone or Instagram for an honest, direct conversation about consultations, mixing and mastering, branding and marketing, video, private events, recurring bookings, label work, or More Than Rap.</p>
+          <p className="text-sm text-muted">Standard studio sessions remain available through the booking system.</p>
+        </section>
+        <ContactSidebar />
+      </div>
+      <section className="mt-16">
+        <h2 className="mb-6 text-3xl font-semibold">Before you book</h2>
         <PolicySummary />
       </section>
-    </main>
+    </div>
   );
 }

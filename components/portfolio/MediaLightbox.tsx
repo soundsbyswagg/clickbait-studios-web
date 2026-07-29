@@ -15,7 +15,7 @@ export function MediaLightbox({ src, caption, onClose }: MediaLightboxProps) {
       onClick={onClose}
     >
       <div className="max-w-4xl w-full">
-        <div className="relative aspect-video bg-neutral-900">
+        <div className="relative aspect-video bg-card">
           <Image src={src} alt={caption} fill className="object-contain" />
         </div>
         <p className="text-center mt-4 text-sm text-muted">{caption}</p>

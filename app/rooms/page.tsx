@@ -1,34 +1,28 @@
 import Link from 'next/link';
 import { rooms } from '@/content/site';
+import { BOOKING_URL, externalLinkProps } from '@/lib/routes';
 
 export const metadata = {
   title: 'Rooms | Clickbait ENT',
-  description: 'A Room and B Room at Clickbait ENT in Atlanta. Choose the right space for your session.',
+  description: 'A Room and B Room at Clickbait ENT in Atlanta.',
 };
 
 export default function RoomsPage() {
   return (
-    <main className="container py-12">
-      <h1 className="text-5xl tracking-tight mb-4">Rooms</h1>
-      <p className="text-xl text-muted mb-10 max-w-2xl">
-        Same professional equipment in both rooms. Difference is size and guest capacity only.
-      </p>
-
-      <div className="grid md:grid-cols-2 gap-6">
+    <div className="container py-12 md:py-20">
+      <h1 className="mb-4 text-5xl tracking-tight md:text-6xl">Choose your room</h1>
+      <p className="mb-10 max-w-2xl text-xl text-muted">Both rooms use the same core equipment. Choose based on group size and the amount of space your session needs.</p>
+      <div className="grid gap-6 md:grid-cols-2">
         {rooms.map((room) => (
-          <div key={room.name} className="studio-card border border-border p-8 rounded-lg">
-            <div className="uppercase text-xs tracking-widest text-muted mb-2">Space</div>
-            <div className="text-xs uppercase tracking-widest text-muted mb-2">{room.name}</div>
-            <h2 className="text-4xl tracking-tight mb-4">{room.capacity}</h2>
-            <p className="text-muted mb-6">{room.note}</p>
-            <Link href="/contact" className="text-sm font-medium underline">Book {room.name} →</Link>
-          </div>
+          <article key={room.name} className="studio-card rounded-lg border border-border bg-card p-8">
+            <p className="mb-2 text-xs uppercase tracking-widest text-muted">{room.name}</p>
+            <h2 className="mb-4 text-4xl tracking-tight">{room.capacity}</h2>
+            <p className="mb-6 text-muted">{room.note}</p>
+            <Link href={BOOKING_URL} {...externalLinkProps} className="inline-flex min-h-11 items-center font-semibold underline">Book {room.name} →</Link>
+          </article>
         ))}
       </div>
-
-      <div className="mt-8 text-sm">
-        <Link href="/services" className="underline">Back to services</Link>
-      </div>
-    </main>
+      <p className="mt-8 text-sm text-muted">Standard studio clients must be at least 18. Sessions require at least four hours of advance booking. See the booking policy for arrival and conduct rules.</p>
+    </div>
   );
 }

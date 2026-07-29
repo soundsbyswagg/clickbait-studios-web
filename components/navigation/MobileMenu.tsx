@@ -70,13 +70,17 @@ export function MobileMenu() {
     <>
       <button
         type="button"
-        className="md:hidden inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white"
+        className="md:hidden inline-flex size-11 items-center justify-center rounded-md border border-border bg-card text-foreground"
         onClick={() => setOpen(true)}
         aria-expanded={open}
         aria-controls="mobile-menu-panel"
         aria-label="Open navigation"
       >
-        Menu
+        <span className="flex w-6 flex-col gap-1.5" aria-hidden="true">
+          <span className="h-0.5 w-full bg-current" />
+          <span className="h-0.5 w-full bg-current" />
+          <span className="h-0.5 w-full bg-current" />
+        </span>
       </button>
 
       {open && (
@@ -85,11 +89,14 @@ export function MobileMenu() {
             <span className="font-semibold tracking-tight text-lg">{siteConfig.name}</span>
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md border border-border px-4 py-2 text-sm font-medium"
+              className="inline-flex size-11 items-center justify-center rounded-md border border-border text-foreground"
               onClick={closeMenu}
               aria-label="Close navigation"
             >
-              Close
+              <span className="relative block size-6" aria-hidden="true">
+                <span className="absolute left-0 top-1/2 h-0.5 w-6 rotate-45 bg-current" />
+                <span className="absolute left-0 top-1/2 h-0.5 w-6 -rotate-45 bg-current" />
+              </span>
             </button>
           </div>
 

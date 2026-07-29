@@ -35,7 +35,7 @@ export function ScrollTextMotion({ children }: { children: React.ReactNode }) {
   }, [reduceMotion]);
 
   return (
-    <div ref={ref} className="overflow-hidden py-12 text-6xl font-semibold tracking-[-2px] text-neutral-200">
+    <div ref={ref} className="overflow-hidden py-12 text-6xl font-semibold tracking-[-2px] text-muted">
       {children}
     </div>
   );

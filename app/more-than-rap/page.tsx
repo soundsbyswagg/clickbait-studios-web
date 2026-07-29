@@ -1,49 +1,34 @@
 import Link from 'next/link';
 import { moreThanRap } from '@/content/site';
-import { ProgramTimeline } from '@/components/program/ProgramTimeline';
-import { InstructorCard } from '@/components/program/InstructorCard';
+import { inquiryRoutes } from '@/lib/routes';
 
 export const metadata = {
   title: 'More Than Rap | Clickbait ENT',
-  description: 'Curriculum-based youth creative program at Clickbait ENT in Atlanta. Schedule, instructors, and enrollment details.',
+  description: 'Structured youth creative-development curriculum for ages 4 through 15.',
 };
 
 export default function MoreThanRapPage() {
   return (
-    <main className="container py-12">
-      <h1 className="text-5xl tracking-tight mb-4">{moreThanRap.name}</h1>
-      <p className="text-xl text-muted mb-8">Curriculum-based youth creative program</p>
-
-      <div className="max-w-2xl space-y-6 text-muted">
-        <div>
-          <h2 className="font-medium text-foreground mb-1">Schedule</h2>
-          <p>{moreThanRap.schedule}</p>
-        </div>
-
-        <ProgramTimeline />
-
-        <InstructorCard />
-
-        <div>
-          <h2 className="font-medium text-foreground mb-1">Deliverables</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            {moreThanRap.deliverables.map((d, idx) => <li key={idx}>{d}</li>)}
-          </ul>
-        </div>
-
-        {moreThanRap.award && (
-          <div>
-            <h2 className="font-medium text-foreground mb-1">Award</h2>
-            <p>{moreThanRap.award}</p>
-          </div>
-        )}
+    <div className="container py-12 md:py-20">
+      <p className="mb-3 text-sm uppercase tracking-widest text-muted">Youth creative-development curriculum</p>
+      <h1 className="mb-4 text-5xl tracking-tight md:text-7xl">{moreThanRap.name}</h1>
+      <p className="mb-10 max-w-2xl text-xl text-muted">{moreThanRap.ages}. {moreThanRap.schedule}. Early-arrival and late-departure options are available.</p>
+      <div className="grid gap-6 md:grid-cols-2">
+        <section className="rounded-lg border border-border bg-card p-7">
+          <h2 className="mb-4 text-2xl font-semibold">Who leads the program</h2>
+          <ul className="space-y-2 text-muted">{moreThanRap.instructors.map((item) => <li key={item}>{item}</li>)}</ul>
+        </section>
+        <section className="rounded-lg border border-border bg-card p-7">
+          <h2 className="mb-4 text-2xl font-semibold">Creative exposure</h2>
+          <ul className="grid grid-cols-2 gap-2 text-muted">{moreThanRap.curriculum.map((item) => <li key={item}>{item}</li>)}</ul>
+        </section>
+        <section className="rounded-lg border border-border bg-card p-7 md:col-span-2">
+          <h2 className="mb-4 text-2xl font-semibold">Assignments and outcomes</h2>
+          <ul className="space-y-2 text-muted">{moreThanRap.deliverables.map((item) => <li key={item}>{item}</li>)}</ul>
+          <p className="mt-5 border-t border-border pt-5">{moreThanRap.award}</p>
+        </section>
       </div>
-
-      <div className="mt-10">
-        <Link href="/contact?topic=More%20Than%20Rap" className="inline-flex bg-black text-white px-6 py-3 text-sm font-medium rounded">
-          Inquire about enrollment
-        </Link>
-      </div>
-    </main>
+      <Link href={inquiryRoutes.moreThanRap} className="mt-8 inline-flex min-h-11 items-center rounded-md bg-accent px-6 font-semibold text-accent-foreground">Submit a program inquiry</Link>
+    </div>
   );
 }

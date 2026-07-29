@@ -2,15 +2,10 @@ import Link from 'next/link';
 
 export default function TermsPage() {
   return (
-    <main className="container py-12 max-w-3xl">
-      <h1 className="text-5xl tracking-tight mb-8">Terms of Service</h1>
-      <p className="text-muted">
-        By booking with Clickbait ENT you agree to our studio rules, including but not limited to the booking and cancellation policy.
-        Full terms are pending client legal review.
-      </p>
-      <p className="mt-4 text-sm">
-        <Link href="/policies/booking">View Booking Policy</Link> • <Link href="/contact" className="underline">Contact for full terms</Link>
-      </p>
-    </main>
+    <div className="container max-w-3xl py-12 md:py-20">
+      <h1 className="mb-8 text-5xl tracking-tight">Studio Terms</h1>
+      <p className="text-muted">By booking studio time, the booking client agrees to the published booking, payment, arrival, timing, age, responsibility, and conduct rules.</p>
+      <Link href="/policies/booking" className="mt-6 inline-flex min-h-11 items-center font-semibold underline">Read the booking policy</Link>
+    </div>
   );
 }

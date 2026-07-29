@@ -18,7 +18,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="container py-16 text-center">
+    <div className="container py-16 text-center">
       <h1 className="text-5xl tracking-tight mb-4">Something went wrong</h1>
       <p className="text-xl text-muted mb-8">
         We&apos;re sorry, but an unexpected error occurred.
@@ -26,13 +26,13 @@ export default function Error({
       <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
         <button
           onClick={reset}
-          className="inline-flex items-center justify-center rounded-md bg-black px-6 py-3 text-base font-medium text-white hover:bg-card"
+          className="inline-flex items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-medium text-accent-foreground"
         >
           Try again
         </button>
         <Link
           href="/"
-          className="inline-flex items-center justify-center rounded-md border px-6 py-3 text-base font-medium hover:bg-card"
+          className="inline-flex items-center justify-center rounded-md border border-border bg-card px-6 py-3 text-base font-medium"
         >
           Back to {siteConfig.name}
         </Link>
@@ -44,6 +44,6 @@ export default function Error({
         </Link>
         .
       </p>
-    </main>
+    </div>
   );
 }

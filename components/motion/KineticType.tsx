@@ -43,7 +43,7 @@ export function KineticType({
   const source = typeof children === 'string' ? children : text || '';
 
   return (
-    <div ref={ref} className="overflow-hidden py-12 text-6xl font-semibold tracking-[-2px] text-neutral-200">
+    <div ref={ref} className="overflow-hidden py-12 text-6xl font-semibold tracking-[-2px] text-muted">
       {source.split('').map((char, i) => (
         <span key={i} className="kinetic-char inline-block">
           {char === ' ' ? '\u00A0' : char}

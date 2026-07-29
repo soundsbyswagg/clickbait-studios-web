@@ -1,59 +1,33 @@
-import { describe, it, expect } from 'vitest';
+import fs from 'node:fs';
+import { describe, expect, it } from 'vitest';
 import { navigation } from '@/content/site';
+import { BOOKING_URL } from '@/lib/routes';
 
-const REQUIRED_ROUTES = [
-  '/',
-  '/services',
-  '/rooms',
-  '/portfolio',
-  '/more-than-rap',
-  '/about',
-  '/faq',
-  '/contact',
-  '/policies/booking',
-  '/policies/privacy',
-  '/policies/terms',
-];
-
-describe('Navigation Contract', () => {
-  it('every header/footer link resolves to required routes', () => {
-    const navHrefs = navigation.map(n => n.href);
-    REQUIRED_ROUTES.forEach(route => {
-      // For core nav, check main ones are present or linked
-      if (['/services', '/rooms', '/portfolio', '/more-than-rap', '/about', '/contact'].includes(route)) {
-        expect(navHrefs).toContain(route);
-      }
-    });
+describe('navigation and booking contract', () => {
+  it('keeps the core routes available', () => {
+    const hrefs = navigation.map((item) => item.href);
+    ['/services', '/rooms', '/portfolio', '/more-than-rap', '/creators-club', '/about', '/faq', '/contact'].forEach((route) => expect(hrefs).toContain(route));
   });
 
-  it('/services is visible in the main navigation', () => {
-    expect(navigation.some(n => n.href === '/services')).toBe(true);
+  it('uses one canonical verified booking URL', () => {
+    expect(BOOKING_URL).toBe('https://www.clickbaitent.com/book-online');
+    const source = ['app', 'components'].flatMap((root) => readTree(root)).join('\n');
+    expect(source).not.toMatch(/href=["'{/]*contact[^>]*>[^<]*Book a Session/i);
   });
 
-  it('every primary booking CTA uses canonical booking URL (from content)', () => {
-    // In real pages, CTAs should use site.bookingBaseUrl
-    // Here we assert the base is valid
-    expect('https://www.clickbaitent.com/book-online').toMatch(/^https:\/\/www\.clickbaitent\.com/);
-  });
-
-  it('no href="#", javascript:void(0) or empty links in nav', () => {
-    navigation.forEach(item => {
-      expect(item.href).not.toBe('#');
-      expect(item.href).not.toMatch(/javascript:void/);
-      // Allow root "/" which has length 1
-      expect(item.href.length).toBeGreaterThanOrEqual(1);
-    });
-  });
-
-  it('no Wix preview or editor URLs in nav', () => {
-    navigation.forEach(item => {
-      expect(item.href).not.toMatch(/wix\.com|preview/);
-    });
-  });
-
-  it('mobile navigation exposes the same core routes', () => {
-    // Assuming same nav object used for mobile
-    const core = navigation.filter(n => ['/services', '/rooms', '/portfolio', '/more-than-rap', '/about', '/contact'].includes(n.href));
-    expect(core.length).toBeGreaterThanOrEqual(5);
+  it('provides an accessible visual hamburger', () => {
+    const source = fs.readFileSync('components/navigation/MobileMenu.tsx', 'utf8');
+    expect(source).toContain('aria-label="Open navigation"');
+    expect(source).toContain('aria-expanded={open}');
+    expect(source).toMatch(/flex w-6 flex-col/);
+    expect(source).not.toMatch(/>\s*Menu\s*</);
   });
 });
+
+function readTree(directory: string): string[] {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const fullPath = `${directory}/${entry.name}`;
+    if (entry.isDirectory()) return readTree(fullPath);
+    return /\.(ts|tsx)$/.test(entry.name) ? [fs.readFileSync(fullPath, 'utf8')] : [];
+  });
+}

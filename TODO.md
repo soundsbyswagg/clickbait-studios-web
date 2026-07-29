@@ -403,6 +403,17 @@ Lighthouse CI HTML report; `webpack-bundle-analyzer` treemap; external link audi
 
 This phase does not replace Wix Bookings, change DNS, invent client claims or statistics, create backend infrastructure beyond Next.js static generation, or add unverified social proof. All copy and pricing display remain bound by the client-approved baseline and content contract tests.
 
+## Production Acceptance Corrections
+
+- PASS — Approved room definitions, capacities, pricing, booking lead time, walk-in hours, contact details, and More Than Rap facts are applied.
+- PASS — Customer-visible internal notes, inactive email references, mail links, unsupported claims, and fake submission states are removed.
+- PASS — Canonical Wix booking routing is used for standard sessions, room booking, header, homepage, and mobile booking controls.
+- PASS — Mobile navigation uses accessible hamburger and close controls while preserving focus, Escape, link-close, scroll-lock, and Back behavior.
+- PASS — Semantic dark-theme tokens, hero media fallback, skip link behavior, single root main landmark, pricing presentation, policy summaries, portfolio honesty, and structured data are corrected.
+- PASS — Focused source-contract tests cover prohibited language, room capacities, shared equipment, base session pricing, booking timing, youth-program separation, canonical booking, landmarks, navigation control, and inactive contact data.
+- BLOCKED — CONTACT_BACKEND_DESTINATION: no approved server-side inquiry destination or environment contract exists. Phone and Instagram provide the honest custom-inquiry path.
+- PENDING MANUAL BROWSER QA — Mobile Safari, Android, responsive visual acceptance, keyboard interaction, and live production presentation.
+
 ---
 
 ## [16] P0 Intent-based homepage entry paths

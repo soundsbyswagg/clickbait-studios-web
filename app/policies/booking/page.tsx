@@ -1,48 +1,16 @@
-import Link from 'next/link';
-
 export default function BookingPolicyPage() {
+  const sections = [
+    ['Booking and arrival', 'Book at least four hours before the requested start time. Automated arrival instructions are sent by text after booking. Customers have a 15-minute lateness window, and booked time is not automatically extended for late arrival.'],
+    ['Payment and no-shows', 'Standard sessions require a 50% deposit or full payment. Website processing fees apply. No-show deposits are nonrefundable.'],
+    ['Session timing', 'The base session has a three-hour minimum. There is no separate overtime rate. A five-minute grace period applies at the end of the session. Extensions require engineer approval, availability, and in-house confirmation.'],
+    ['Age and responsibility', 'Standard studio clients must be at least 18 years old. The booking client is responsible for damage caused by the client or guests. More Than Rap is a separate supervised youth-program lane.'],
+    ['Studio conduct', 'No smoking, guns or weapons, or illegal activity is permitted.'],
+    ['Files and additional work', 'Files are stored for 30 days and may be delivered by email, AirDrop, or WeTransfer. Typical turnaround is 24 to 72 hours based on the project. Mastering and revisions are paid add-ons, with a maximum of two revisions.'],
+  ];
   return (
-    <main className="container py-12 max-w-3xl">
-      <h1 className="text-5xl tracking-tight mb-8">Booking & Cancellation Policy</h1>
-
-      <div className="space-y-6 text-muted">
-        <div>
-          <h2 className="font-medium mb-2">Deposits & No-Shows</h2>
-          <p>Deposits are non-refundable for no-shows.</p>
-        </div>
-
-        <div>
-          <h2 className="font-medium mb-2">Lateness & Grace Periods</h2>
-          <p>Clients receive a 15-minute lateness window. Sessions have a 5-minute end-of-session grace period.</p>
-        </div>
-
-        <div>
-          <h2 className="font-medium mb-2">Extensions</h2>
-          <p>Any session extension must be communicated to the engineer, approved, and confirmed in-house.</p>
-        </div>
-
-        <div>
-          <h2 className="font-medium mb-2">Age & Responsibility</h2>
-          <p>Minimum booking age: 18. The client is financially responsible for any damage caused during the booking.</p>
-        </div>
-
-        <div>
-          <h2 className="font-medium mb-2">Prohibited Conduct</h2>
-          <ul className="list-disc pl-5">
-            <li>Smoking</li>
-            <li>Guns or weapons</li>
-            <li>Illegal activity</li>
-          </ul>
-        </div>
-      </div>
-
-      <p className="mt-8 text-sm text-muted">
-        Full policy details (cancellation windows, refunds, guests, file liability, etc.) are pending final client confirmation.
-      </p>
-
-      <div className="mt-6">
-        <Link href="/contact" className="underline">Questions? Contact us</Link>
-      </div>
-    </main>
+    <div className="container max-w-3xl py-12 md:py-20">
+      <h1 className="mb-8 text-5xl tracking-tight">Booking Policy</h1>
+      <div className="space-y-7">{sections.map(([title, body]) => <section key={title}><h2 className="mb-2 text-xl font-semibold">{title}</h2><p className="text-muted">{body}</p></section>)}</div>
+    </div>
   );
 }

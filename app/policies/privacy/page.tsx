@@ -2,15 +2,10 @@ import Link from 'next/link';
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="container py-12 max-w-3xl">
-      <h1 className="text-5xl tracking-tight mb-8">Privacy Policy</h1>
-      <p className="text-muted">
-        Clickbait ENT respects your privacy. We collect only the information necessary to book sessions and communicate with you.
-        Full policy text is pending legal review and client approval.
-      </p>
-      <p className="mt-4 text-sm">
-        <Link href="/contact" className="underline">Contact us for the current policy</Link>
-      </p>
-    </main>
+    <div className="container max-w-3xl py-12 md:py-20">
+      <h1 className="mb-8 text-5xl tracking-tight">Privacy</h1>
+      <p className="text-muted">Booking is completed through the linked Wix booking experience, which processes the information needed to schedule and manage your session. For questions about information connected to a booking, contact Clickbait ENT by phone or Instagram.</p>
+      <Link href="/contact" className="mt-6 inline-flex min-h-11 items-center font-semibold underline">Contact Clickbait ENT</Link>
+    </div>
   );
 }

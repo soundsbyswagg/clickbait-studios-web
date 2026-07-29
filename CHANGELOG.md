@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+### Production acceptance corrections
+- Corrected A Room and B Room descriptions, capacities, and shared core-equipment language.
+- Replaced vague pricing with the approved base session, additional production work, and custom consultation model.
+- Unified standard booking links through the verified Wix destination.
+- Removed the inactive email address, mail links, and simulated form-success flow; custom inquiries now use phone and Instagram.
+- Corrected verified contact, parking, walk-in, advance-booking, and automated arrival information.
+- Completed More Than Rap content for ages 4–15 without applying the standard adult booking rule.
+- Repaired mobile navigation controls, header contrast, hero fallback, responsive typography, skip link, and document landmarks.
+- Defined the semantic monochrome theme contract and corrected metadata and structured data.
+- Added automated customer-facing source and content-contract tests.
+
 ### Added
 - TODO.md: 15 execution items ranked P0/P1/P2 for moving the site from functional to award-contending. Items cover cinematic hero, room storytelling, motion choreography, mobile booking control, visual identity system, portfolio media, service workflow, program narrative, social proof, contact conversion, animated navigation, kinetic typography, page transitions, visual regression testing, and production-readiness proof. #2026-07-29
 

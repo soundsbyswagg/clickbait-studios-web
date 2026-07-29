@@ -1,37 +1,20 @@
-import { BookingGuard } from '@/components/booking/BookingGuard';
-import { WixReturnPath } from '@/components/booking/WixReturnPath';
-import { LeadQualifier } from '@/components/booking/LeadQualifier';
 import { ServiceCard } from '@/components/services/ServiceCard';
+import { PricingDetails } from '@/components/services/PricingDetails';
 import { services } from '@/content/site';
 
 export const metadata = {
   title: 'Services | Clickbait ENT',
-  description: 'Engineer-assisted sessions, solo recording, podcast and content room, and consultation at Clickbait ENT.',
+  description: 'Recording sessions, studio rental, podcast and content projects, and custom creative services at Clickbait ENT.',
 };
 
 export default function ServicesPage() {
   return (
-    <main className="container py-12">
-      <h1 className="text-5xl tracking-tight mb-4">Services</h1>
-      <p className="text-xl text-muted mb-10 max-w-2xl">
-        Priority offerings for recording artists, producers, podcasters, and labels.
-        All sessions book through our Wix system for real-time availability.
-      </p>
-
-      <div className="grid md:grid-cols-2 gap-6">
-        {services.map((service) => (
-          <ServiceCard key={service.slug} service={service} />
-        ))}
-      </div>
-
-      <BookingGuard />
-      <WixReturnPath />
-      <LeadQualifier />
-
-      <div className="mt-12 text-sm text-muted">
-        Note: Exact pricing, engineer rates, and add-ons (mixing, mastering, revisions) are confirmed at booking.
-        See client baseline for full details.
-      </div>
-    </main>
+    <div className="container py-12 md:py-20">
+      <h1 className="mb-4 text-5xl tracking-tight md:text-6xl">Services</h1>
+      <p className="mb-10 max-w-2xl text-xl text-muted">Choose standard studio time or start a consultation for custom creative work.</p>
+      <div className="grid gap-6 md:grid-cols-2">{services.map((service) => <ServiceCard key={service.slug} service={service} />)}</div>
+      <PricingDetails />
+      <p className="mt-10 text-sm text-muted">Booked time is not extended for late arrival. Additional time requires engineer approval and availability. Review the complete booking policy before your session.</p>
+    </div>
   );
 }

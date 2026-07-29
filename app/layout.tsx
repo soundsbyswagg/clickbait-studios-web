@@ -12,6 +12,7 @@ import { ContactStrip } from '@/components/layout/ContactStrip';
 import { BookingBar } from '@/components/layout/BookingBar';
 import './globals.css';
 import { siteConfig, navigation } from '@/content/site';
+import { BOOKING_URL, externalLinkProps } from '@/lib/routes';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -46,20 +47,11 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
   },
   robots: {
     index: true,
@@ -87,9 +79,9 @@ export default function RootLayout({
         <div className="grain" aria-hidden="true" />
         <a href="#main" className="skip-link">Skip to content</a>
         <StructuredData />
-        <header className="border-b">
+        <header className="border-b border-border bg-background text-foreground">
           <nav className="container flex items-center justify-between py-4" role="navigation" aria-label="Main navigation">
-            <Link href="/" className="font-semibold tracking-tight" aria-label={`${siteConfig.name} - Home`}>
+            <Link href="/" className="text-lg font-bold tracking-tight text-foreground" aria-label={`${siteConfig.name} - Home`}>
               {siteConfig.name}
             </Link>
             <div className="hidden md:flex gap-6 text-sm">
@@ -99,8 +91,9 @@ export default function RootLayout({
             </div>
             <MobileMenu />
             <Link
-              href="/contact"
-              className="hidden md:inline-flex items-center justify-center rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-card"
+              href={BOOKING_URL}
+              {...externalLinkProps}
+              className="hidden min-h-11 md:inline-flex items-center justify-center rounded-md bg-accent px-5 py-2 text-sm font-semibold text-accent-foreground"
             >
               Book a Session
             </Link>

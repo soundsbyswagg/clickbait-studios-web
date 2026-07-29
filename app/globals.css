@@ -1,16 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  color-scheme: light;
+  --background: #090909;
+  --foreground: #f5f5f5;
+  --card: #151515;
+  --muted: #b6b6b6;
+  --border: #3a3a3a;
+  --accent: #f5f5f5;
+  --accent-foreground: #090909;
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-manrope);
 }
 
 body {
@@ -18,6 +27,44 @@ body {
   color: var(--foreground);
   font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
   font-feature-settings: "ss01", "ss02", "cv01";
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+input,
+select,
+textarea {
+  color: var(--foreground);
+}
+
+.hero-fallback {
+  background:
+    radial-gradient(circle at 78% 24%, rgb(255 255 255 / 10%), transparent 35%),
+    linear-gradient(135deg, #171717 0%, #090909 55%, #111 100%);
+}
+
+.hero-fallback::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: 0.18;
+  background-image: repeating-linear-gradient(115deg, transparent 0 3px, rgb(255 255 255 / 3%) 3px 4px);
+}
+
+.mobile-booking-bar {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 767px) {
+  main#main {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
 }
 
 h1,

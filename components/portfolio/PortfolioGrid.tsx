@@ -15,9 +15,9 @@ export function PortfolioGrid() {
       <div className="container py-20 md:py-28 text-center">
         <h1 className="text-5xl md:text-6xl tracking-[-0.04em] mb-6">Work</h1>
         <p className="text-muted max-w-2xl mx-auto mb-8">
-          Portfolio content is drawn from approved social media and client work. All items require explicit permission before publication.
+          View current sessions and project work through the official Clickbait ENT Instagram.
         </p>
-        <p className="text-sm text-muted">Current status: Inventory in progress. Community playlist available via Instagram @clickbait.ent.</p>
+        <a href="https://www.instagram.com/clickbait.ent/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center font-semibold underline">View @clickbait.ent on Instagram</a>
       </div>
     );
   }
@@ -34,7 +34,7 @@ export function PortfolioGrid() {
             className="studio-card group relative overflow-hidden rounded-lg border border-border bg-card p-0 text-left"
             onClick={() => setLightbox({ src: item.src, caption: item.caption })}
           >
-            <div className="aspect-video relative bg-neutral-900">
+            <div className="aspect-video relative bg-card">
               {item.type === 'image' ? (
                 <Image src={item.src} alt={item.caption} fill className="object-cover" />
               ) : (

@@ -1,32 +1,16 @@
 import Link from 'next/link';
-import { ProcessWalkthrough } from '@/components/credibility/ProcessWalkthrough';
+import { BOOKING_URL, externalLinkProps } from '@/lib/routes';
 
 export default function AboutPage() {
   return (
-    <main className="container py-12 max-w-3xl">
-      <h1 className="text-5xl tracking-tight mb-4">About Clickbait ENT</h1>
-
-      <div className="space-y-6 text-muted">
-        <p>
-          Clickbait ENT is an Atlanta-based recording studio and creative program focused on
-          helping artists finish records from first idea to release.
-        </p>
-
-        <div>
-          <h2 className="font-medium text-foreground mb-2">Team</h2>
-          <ul className="space-y-1">
-            <li><strong className="text-foreground">Prince Ali</strong> — Master Engineer, Producer, Musician, DJ, Artist</li>
-            <li><strong className="text-foreground">ACEKXLD</strong> — Master Engineer, Producer, Musician, Lead Technician</li>
-            <li><strong className="text-foreground">Swagg</strong> — Musician, Lead Consultant, Artist, Manager, Producer</li>
-          </ul>
-        </div>
+    <div className="container max-w-3xl py-12 md:py-20">
+      <p className="mb-3 text-sm uppercase tracking-widest text-muted">Clickbait Enterprise</p>
+      <h1 className="mb-6 text-5xl tracking-tight md:text-6xl">Clickbait ENT</h1>
+      <p className="text-xl leading-relaxed text-muted">An Atlanta creative space for recording artists, producers, podcasters, and record labels. The studio offers professional space, engineering support, and creative services built around the work.</p>
+      <div className="mt-10 flex flex-wrap gap-4">
+        <Link href={BOOKING_URL} {...externalLinkProps} className="inline-flex min-h-11 items-center rounded-md bg-accent px-6 font-semibold text-accent-foreground">Book a Session</Link>
+        <Link href="/contact" className="inline-flex min-h-11 items-center font-semibold underline">Ask about a project</Link>
       </div>
-
-      <ProcessWalkthrough />
-
-      <div className="mt-10">
-        <Link href="/contact" className="underline">Work with us</Link>
-      </div>
-    </main>
+    </div>
   );
 }
