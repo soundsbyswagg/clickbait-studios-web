@@ -12,7 +12,7 @@ export const PortfolioItemSchema = z.object({
 
 export const BrandSchema = z.object({
   name: z.literal('Clickbait ENT'),
-  legalName: z.string().optional(), // VERIFY
+  legalName: z.string().optional(),
   description: z.string().min(10),
 });
 
