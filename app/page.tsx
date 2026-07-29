@@ -6,6 +6,7 @@ import HeroMedia from '@/components/hero/HeroMedia';
 import { SplitText } from '@/components/hero/SplitText';
 import { services, rooms, moreThanRap } from '@/content/site';
 import { MOTION } from '@/lib/motion';
+import { ServiceCard } from '@/components/services/ServiceCard';
 
 const tickerItems = [
   'Record in Atlanta',
@@ -138,20 +139,8 @@ export default function Home() {
           Priority services
         </motion.h2>
         <div className="grid md:grid-cols-3 gap-6">
-          {services.slice(0, 3).map((service, index) => (
-            <motion.article
-              key={service.slug}
-              className="studio-card border border-border p-7 rounded-lg group"
-              initial={{ y: 28 }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: index * MOTION.stagger, duration: MOTION.normal }}
-            >
-              <h3 className="font-medium text-xl mb-2 group-hover:underline">{service.title}</h3>
-              <p className="text-sm text-muted mb-4">{service.description}</p>
-              <div className="text-xs text-muted mb-4">{service.duration} • {service.startingPrice}</div>
-              <Link href="/contact" className="text-sm font-medium">{service.cta} →</Link>
-            </motion.article>
+          {services.slice(0, 3).map((service) => (
+            <ServiceCard key={service.slug} service={service} />
           ))}
         </div>
         <div className="mt-8">
