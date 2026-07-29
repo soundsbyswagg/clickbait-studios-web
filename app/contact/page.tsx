@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { ContactSidebar } from '@/components/contact/ContactSidebar';
+import { SessionPrep } from '@/components/prepare/SessionPrep';
 
 export const metadata: Metadata = {
   title: 'Contact | Clickbait ENT',
@@ -20,6 +21,8 @@ export default function ContactPage() {
           <ContactForm />
           <ContactSidebar />
         </div>
+
+        <SessionPrep />
       </section>
     </main>
   );
