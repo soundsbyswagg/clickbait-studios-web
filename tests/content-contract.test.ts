@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest';
-import { SiteSchema } from '@/lib/schemas';
 import { siteConfig, services, rooms, moreThanRap } from '@/content/site';
 
 describe('Content Contract', () => {

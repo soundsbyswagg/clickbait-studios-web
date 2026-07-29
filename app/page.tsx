@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { siteConfig, services, rooms, moreThanRap } from '@/content/site';
+import { services, rooms, moreThanRap } from '@/content/site';
 import { MOTION } from '@/lib/motion';
 
 export default function Home() {
@@ -50,8 +50,8 @@ export default function Home() {
       {/* Trust strip - simple slide in */}
       <section className="border-b py-6 bg-neutral-50">
         <div className="container grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-          {['24-hour booking by advance reservation', 'Engineer or solo options', 'Podcast & content room', 'Free parking • Atlanta'].map((text, i) => (
-            <div key={i} className="flex items-center gap-2">
+          {['24-hour booking by advance reservation', 'Engineer or solo options', 'Podcast & content room', 'Free parking • Atlanta'].map((text, index) => (
+            <div key={index} className="flex items-center gap-2">
               <div className="h-1 w-1 bg-black rounded-full" />
               {text}
             </div>
@@ -84,7 +84,7 @@ export default function Home() {
       <section className="container py-16">
         <h2 className="text-4xl tracking-tight mb-8">Priority services</h2>
         <div className="grid md:grid-cols-3 gap-6">
-          {services.slice(0, 3).map((service, index) => (
+          {services.slice(0, 3).map((service) => (
             <div key={service.slug} className="border p-6 rounded-lg group">
               <h3 className="font-medium text-xl mb-2 group-hover:underline">{service.title}</h3>
               <p className="text-sm text-neutral-600 mb-4">{service.description}</p>

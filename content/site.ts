@@ -1,4 +1,3 @@
-import { z } from 'zod';
 import { SiteSchema } from '@/lib/schemas';
 
 export const siteConfig = {
@@ -48,7 +47,7 @@ export const services = [
     slug: 'consultation',
     title: 'Consultation',
     description: 'Strategy, production planning, or artist development.',
-    startingPrice: '$50',
+    startingPrice: 'From $50',
     duration: '1 hour',
     cta: 'Book Consultation',
     wixUrl: undefined,

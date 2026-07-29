@@ -40,7 +40,8 @@ describe('Navigation Contract', () => {
     navigation.forEach(item => {
       expect(item.href).not.toBe('#');
       expect(item.href).not.toMatch(/javascript:void/);
-      expect(item.href.length).toBeGreaterThan(1);
+      // Allow root "/" which has length 1
+      expect(item.href.length).toBeGreaterThanOrEqual(1);
     });
   });
 
