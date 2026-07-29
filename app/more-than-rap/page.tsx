@@ -1,5 +1,12 @@
 import Link from 'next/link';
 import { moreThanRap } from '@/content/site';
+import { ProgramTimeline } from '@/components/program/ProgramTimeline';
+import { InstructorCard } from '@/components/program/InstructorCard';
+
+export const metadata = {
+  title: 'More Than Rap | Clickbait ENT',
+  description: 'Curriculum-based youth creative program at Clickbait ENT in Atlanta. Schedule, instructors, and enrollment details.',
+};
 
 export default function MoreThanRapPage() {
   return (
@@ -9,39 +16,34 @@ export default function MoreThanRapPage() {
 
       <div className="max-w-2xl space-y-6 text-muted">
         <div>
-          <h3 className="font-medium mb-1">Schedule</h3>
+          <h2 className="font-medium text-foreground mb-1">Schedule</h2>
           <p>{moreThanRap.schedule}</p>
         </div>
 
-        <div>
-          <h3 className="font-medium mb-1">Instructors</h3>
-          <ul className="list-disc pl-5">
-            {moreThanRap.instructors.map((i, idx) => <li key={idx}>{i}</li>)}
-          </ul>
-        </div>
+        <ProgramTimeline />
+
+        <InstructorCard />
 
         <div>
-          <h3 className="font-medium mb-1">Deliverables</h3>
-          <ul className="list-disc pl-5">
+          <h2 className="font-medium text-foreground mb-1">Deliverables</h2>
+          <ul className="list-disc pl-5 space-y-1">
             {moreThanRap.deliverables.map((d, idx) => <li key={idx}>{d}</li>)}
           </ul>
         </div>
 
         {moreThanRap.award && (
           <div>
-            <h3 className="font-medium mb-1">Award</h3>
+            <h2 className="font-medium text-foreground mb-1">Award</h2>
             <p>{moreThanRap.award}</p>
           </div>
         )}
       </div>
 
       <div className="mt-10">
-        <Link href="/contact" className="inline-flex bg-black text-white px-6 py-3 rounded text-sm font-medium">Inquire about enrollment</Link>
+        <Link href="/contact?topic=More%20Than%20Rap" className="inline-flex bg-black text-white px-6 py-3 text-sm font-medium rounded">
+          Inquire about enrollment
+        </Link>
       </div>
-
-      <p className="mt-8 text-sm text-muted">
-        Age range, exact duration, pricing, and minor policies are pending client verification.
-      </p>
     </main>
   );
 }
