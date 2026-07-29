@@ -1,5 +1,15 @@
 import { z } from 'zod';
 
+export const PortfolioItemSchema = z.object({
+  id: z.string().min(1),
+  type: z.enum(['image', 'video']),
+  src: z.string().min(1),
+  caption: z.string().min(1),
+  permission: z.boolean(),
+  clientName: z.string().optional(),
+  serviceProvided: z.string().optional(),
+});
+
 export const BrandSchema = z.object({
   name: z.literal('Clickbait ENT'),
   legalName: z.string().optional(), // VERIFY
@@ -47,6 +57,15 @@ export const SiteSchema = z.object({
   rooms: z.array(RoomSchema).length(2),
   moreThanRap: MoreThanRapSchema,
   bookingBaseUrl: z.string().url(),
+  portfolioItems: z.array(z.object({
+    id: z.string().min(1),
+    type: z.enum(['image', 'video']),
+    src: z.string().min(1),
+    caption: z.string().min(1),
+    permission: z.boolean(),
+    clientName: z.string().optional(),
+    serviceProvided: z.string().optional(),
+  })).optional(),
 });
 
 export type Site = z.infer<typeof SiteSchema>;

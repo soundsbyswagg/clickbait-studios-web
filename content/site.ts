@@ -1,4 +1,5 @@
-import { SiteSchema } from '@/lib/schemas';
+import { z } from 'zod';
+import { SiteSchema, PortfolioItemSchema } from '@/lib/schemas';
 
 export const siteConfig = {
   name: 'Clickbait ENT',
@@ -91,12 +92,13 @@ export const navigation = [
 ];
 
 export const site = {
-  brand: { name: 'Clickbait ENT' as const, description: siteConfig.description },
+  brand: { name: siteConfig.name, description: siteConfig.description },
   contact: { phone: siteConfig.links.phone, instagram: siteConfig.links.instagram, address: siteConfig.address, email: siteConfig.email },
   services,
   rooms,
   moreThanRap,
   bookingBaseUrl: siteConfig.bookingBaseUrl,
+  portfolioItems: [] as z.infer<typeof PortfolioItemSchema>[],
 };
 
 SiteSchema.parse(site); // Runtime validation at import time
