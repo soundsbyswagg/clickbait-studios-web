@@ -12,17 +12,13 @@ export default function AboutPage() {
         </p>
 
         <div>
-          <h2 className="font-medium mb-2">Team</h2>
+          <h2 className="font-medium text-foreground mb-2">Team</h2>
           <ul className="space-y-1">
-            <li><strong>Prince Ali</strong> — Master Engineer, Producer, Musician, DJ, Artist</li>
-            <li><strong>ACEKXLD</strong> — Master Engineer, Producer, Musician, Lead Technician</li>
-            <li><strong>Swagg</strong> — Musician, Lead Consultant, Artist, Manager, Producer</li>
+            <li><strong className="text-foreground">Prince Ali</strong> — Master Engineer, Producer, Musician, DJ, Artist</li>
+            <li><strong className="text-foreground">ACEKXLD</strong> — Master Engineer, Producer, Musician, Lead Technician</li>
+            <li><strong className="text-foreground">Swagg</strong> — Musician, Lead Consultant, Artist, Manager, Producer</li>
           </ul>
         </div>
-
-        <p className="text-sm text-muted">
-          Full bios and vision details pending client confirmation for public use.
-        </p>
       </div>
 
       <div className="mt-10">

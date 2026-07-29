@@ -3,7 +3,7 @@ import Link from 'next/link';
 const faqs = [
   {
     q: "What is the difference between A Room and B Room?",
-    a: "Same equipment. A Room holds up to 6 guests; B Room up to 3. Choose A for larger groups or teams."
+    a: "Same equipment. A Room holds up to 6 guests; B Room holds up to 3. Choose A for larger groups or teams."
   },
   {
     q: "How far in advance do I need to book?",
@@ -18,8 +18,8 @@ const faqs = [
     a: "Recording access. Engineering needs are determined via consultation or at time of booking. Files delivered via email, AirDrop, or WeTransfer. 2 revisions max. Files retained 30 days."
   },
   {
-    q: "Is More Than Rap open to all ages?",
-    a: "Youth creative program. Exact age range pending verification (reported 4-15 range in discovery)."
+    q: "Is More Than Rap open to youth?",
+    a: "Youth creative program. Contact us for current age eligibility and enrollment details."
   }
 ];
 
