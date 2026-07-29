@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { ContactForm } from '@/components/ContactForm';
-import { siteConfig } from '@/content/site';
+import { ContactForm } from '@/components/contact/ContactForm';
+import { ContactSidebar } from '@/components/contact/ContactSidebar';
 
 export const metadata: Metadata = {
   title: 'Contact | Clickbait ENT',
@@ -10,41 +10,16 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main>
-      <section>
-        <p>Clickbait ENT Support</p>
-        <h1>Contact Clickbait ENT</h1>
-        <p>
+      <section className="container py-12">
+        <h1 className="text-5xl tracking-tight mb-4">Contact Clickbait ENT</h1>
+        <p className="text-xl text-muted mb-10 max-w-2xl">
           Questions about sessions, the More Than Rap program, or studio availability.
         </p>
-      </section>
 
-      <section aria-label="Contact options">
-        <article>
-          <p>Phone</p>
-          <h2>{siteConfig.links.phone}</h2>
-          <a href={`tel:${siteConfig.links.phone}`}>Call or text</a>
-        </article>
-
-        <article>
-          <p>Instagram</p>
-          <h2>{siteConfig.links.instagram}</h2>
-          <a href={siteConfig.links.instagram} target="_blank">DM us</a>
-        </article>
-
-        <article>
-          <p>Location</p>
-          <h2>{siteConfig.address}</h2>
-          <p>Free parking. Walk-ins 8 AM–5 PM. 24h booking by advance reservation.</p>
-        </article>
-      </section>
-
-      <section aria-label="Send us a message">
-        <ContactForm />
-      </section>
-
-      <section aria-label="Frequently asked questions">
-        <h2>Common Questions</h2>
-        {/* Add from site content */}
+        <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
+          <ContactForm />
+          <ContactSidebar />
+        </div>
       </section>
     </main>
   );
