@@ -40,6 +40,4 @@
 - Reduced motion support
 - Clean TS + Zod validation
 
-See `docs/clickbaitent/CLICKBAIT_ENT_WEBSITE_REBUILD_BRIEF.md` (in parent RetailVitamin) for full client baseline and blockers.
-
 **To customize for client:** Only edit content/ and the policy pages as needed.
