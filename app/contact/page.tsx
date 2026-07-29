@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { ContactSidebar } from '@/components/contact/ContactSidebar';
 import { SessionPrep } from '@/components/prepare/SessionPrep';
+import { PolicySummary } from '@/components/policies/PolicySummary';
 
 export const metadata: Metadata = {
   title: 'Contact | Clickbait ENT',
@@ -23,6 +24,7 @@ export default function ContactPage() {
         </div>
 
         <SessionPrep />
+        <PolicySummary />
       </section>
     </main>
   );
