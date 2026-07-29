@@ -4,6 +4,11 @@ import { LeadQualifier } from '@/components/booking/LeadQualifier';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { services } from '@/content/site';
 
+export const metadata = {
+  title: 'Services | Clickbait ENT',
+  description: 'Engineer-assisted sessions, solo recording, podcast and content room, and consultation at Clickbait ENT.',
+};
+
 export default function ServicesPage() {
   return (
     <main className="container py-12">

@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import { rooms } from '@/content/site';
 
+export const metadata = {
+  title: 'Rooms | Clickbait ENT',
+  description: 'A Room and B Room at Clickbait ENT in Atlanta. Choose the right space for your session.',
+};
+
 export default function RoomsPage() {
   return (
     <main className="container py-12">
@@ -11,8 +16,9 @@ export default function RoomsPage() {
 
       <div className="grid md:grid-cols-2 gap-6">
         {rooms.map((room) => (
-          <div key={room.name} className="border p-8 rounded-lg">
-            <div className="uppercase text-xs tracking-[2px] text-muted mb-2">{room.name}</div>
+          <div key={room.name} className="studio-card border border-border p-8 rounded-lg">
+            <div className="uppercase text-xs tracking-widest text-muted mb-2">Space</div>
+            <div className="text-xs uppercase tracking-widest text-muted mb-2">{room.name}</div>
             <h2 className="text-4xl tracking-tight mb-4">{room.capacity}</h2>
             <p className="text-muted mb-6">{room.note}</p>
             <Link href="/contact" className="text-sm font-medium underline">Book {room.name} →</Link>
