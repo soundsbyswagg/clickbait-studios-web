@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Manrope, Space_Grotesk } from 'next/font/google';
 import { SmoothScroll } from '@/components/motion/SmoothScroll';
+import { MotionProvider } from '@/components/motion/MotionProvider';
+import Cursor from '@/components/ui/Cursor';
+import Loader from '@/components/ui/Loader';
 import { ContactStrip } from '@/components/layout/ContactStrip';
 import { BookingBar } from '@/components/layout/BookingBar';
 import './globals.css';
@@ -75,7 +78,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${spaceGrotesk.variable}`}>
+      <body className={`${manrope.variable} ${spaceGrotesk.variable} antialiased`}>
+        <Loader />
+        <Cursor />
+        <div className="grain" aria-hidden="true" />
         <a href="#main" className="skip-link">Skip to content</a>
         <header className="border-b">
           <nav className="container flex items-center justify-between py-4" role="navigation" aria-label="Main navigation">
@@ -96,7 +102,9 @@ export default function RootLayout({
           </nav>
         </header>
         <SmoothScroll>
-          <main id="main">{children}</main>
+          <MotionProvider>
+            <main id="main">{children}</main>
+          </MotionProvider>
         </SmoothScroll>
         <BookingBar />
         <ContactStrip />
