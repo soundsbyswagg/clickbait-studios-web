@@ -5,50 +5,88 @@ import { motion } from 'framer-motion';
 import { services, rooms, moreThanRap } from '@/content/site';
 import { MOTION } from '@/lib/motion';
 
+const tickerItems = [
+  'Record in Atlanta',
+  'Engineer-assisted sessions',
+  'Solo room access',
+  'Podcast and content',
+  'Finish the record',
+];
+
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      {/* Hero - controlled motion per prompt */}
-      <section className="min-h-[80vh] flex items-center border-b">
+      <section className="min-h-[78vh] flex items-center border-b py-20 md:py-28">
         <div className="container">
           <div className="max-w-4xl">
-            <p className="text-sm uppercase tracking-[3px] text-neutral-500 mb-4">Atlanta • 24/7 Booking</p>
+            <motion.p
+              className="text-sm uppercase tracking-[3px] text-neutral-500 mb-5"
+              initial={{ y: 16 }}
+              animate={{ y: 0 }}
+              transition={{ duration: MOTION.normal, ease: MOTION.easing }}
+            >
+              Atlanta • 24/7 Booking
+            </motion.p>
 
             <div className="overflow-hidden">
               <motion.h1
-                className="text-7xl md:text-8xl font-semibold tracking-tighter leading-none mb-6"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
+                className="text-[clamp(3.75rem,11vw,7.5rem)] font-semibold tracking-[-0.065em] leading-[0.82] mb-8"
+                initial={{ y: 40 }}
+                animate={{ y: 0 }}
                 transition={{ duration: MOTION.slow, ease: MOTION.easing }}
               >
                 BOOK THE ROOM.<br />FINISH THE RECORD.
               </motion.h1>
             </div>
 
-            <p className="text-xl text-neutral-600 max-w-md mb-8">
+            <motion.p
+              className="text-lg md:text-xl text-neutral-600 max-w-xl mb-9 leading-relaxed"
+              initial={{ y: 24 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.12, duration: MOTION.normal, ease: MOTION.easing }}
+            >
               Engineer-assisted sessions. Solo rooms. Podcast and video. The More Than Rap program.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap gap-4">
+            <motion.div
+              className="flex flex-wrap gap-4"
+              initial={{ y: 24 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.2, duration: MOTION.normal, ease: MOTION.easing }}
+            >
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-black px-8 py-4 text-base font-medium text-white hover:bg-neutral-800 motion-normal"
+                className="inline-flex items-center justify-center rounded-md bg-black px-8 py-4 text-base font-medium text-white hover:bg-neutral-800 hover:-translate-y-1 motion-normal"
               >
                 Book a Session
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-md border px-8 py-4 text-base font-medium hover:bg-neutral-50 motion-normal"
+                className="inline-flex items-center justify-center rounded-md border border-neutral-300 px-8 py-4 text-base font-medium hover:border-black hover:-translate-y-1 motion-normal"
               >
                 Explore Services
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Trust strip - simple slide in */}
-      <section className="border-b py-6 bg-neutral-50">
+      <section className="ticker" aria-label="Studio highlights">
+        <div className="ticker-track">
+          {[0, 1].map((group) => (
+            <div className="ticker-group" aria-hidden={group === 1} key={group}>
+              {tickerItems.map((item) => (
+                <span className="contents" key={item}>
+                  <span>{item}</span>
+                  <span className="ticker-dot" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-b py-6 bg-neutral-50 text-neutral-950">
         <div className="container grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
           {['24-hour booking by advance reservation', 'Engineer or solo options', 'Podcast & content room', 'Free parking • Atlanta'].map((text, index) => (
             <div key={index} className="flex items-center gap-2">
@@ -59,16 +97,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Rooms - stagger cards */}
-      <section className="container py-16 border-b">
-        <h2 className="text-4xl tracking-tight mb-8">Choose your room</h2>
+      <section className="container py-20 md:py-28 border-b">
+        <motion.h2
+          className="text-4xl md:text-6xl tracking-[-0.04em] mb-10"
+          initial={{ y: 28 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: MOTION.normal, ease: MOTION.easing }}
+        >
+          Choose your room
+        </motion.h2>
         <div className="grid md:grid-cols-2 gap-6">
           {rooms.map((room, index) => (
             <motion.div
               key={room.name}
-              className="border p-8 rounded-lg hover:shadow-sm motion-normal"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="studio-card border border-neutral-300 p-7 md:p-10 rounded-lg"
+              initial={{ y: 20 }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
               transition={{ delay: index * MOTION.stagger, duration: MOTION.normal }}
             >
               <div className="text-xs uppercase tracking-widest text-neutral-500 mb-2">{room.name.toUpperCase()}</div>
@@ -80,17 +126,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services - staggered reveal */}
-      <section className="container py-16">
-        <h2 className="text-4xl tracking-tight mb-8">Priority services</h2>
+      <section className="container py-20 md:py-28">
+        <motion.h2
+          className="text-4xl md:text-6xl tracking-[-0.04em] mb-10"
+          initial={{ y: 28 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: MOTION.normal, ease: MOTION.easing }}
+        >
+          Priority services
+        </motion.h2>
         <div className="grid md:grid-cols-3 gap-6">
-          {services.slice(0, 3).map((service) => (
-            <div key={service.slug} className="border p-6 rounded-lg group">
+          {services.slice(0, 3).map((service, index) => (
+            <motion.article
+              key={service.slug}
+              className="studio-card border border-neutral-300 p-7 rounded-lg group"
+              initial={{ y: 28 }}
+              whileInView={{ y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: index * MOTION.stagger, duration: MOTION.normal }}
+            >
               <h3 className="font-medium text-xl mb-2 group-hover:underline">{service.title}</h3>
               <p className="text-sm text-neutral-600 mb-4">{service.description}</p>
               <div className="text-xs text-neutral-500 mb-4">{service.duration} • {service.startingPrice}</div>
               <Link href="/contact" className="text-sm font-medium">{service.cta} →</Link>
-            </div>
+            </motion.article>
           ))}
         </div>
         <div className="mt-8">
@@ -98,36 +158,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* More Than Rap */}
-      <section className="bg-black text-white py-16">
+      <section className="bg-black text-white py-20 md:py-28">
         <div className="container">
-          <div className="max-w-xl">
+          <motion.div
+            className="max-w-2xl"
+            initial={{ x: -36 }}
+            whileInView={{ x: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: MOTION.slow, ease: MOTION.easing }}
+          >
             <div className="uppercase text-xs tracking-[2px] mb-2 text-white/60">Curriculum Program</div>
-            <h2 className="text-5xl tracking-tighter mb-6">{moreThanRap.name}</h2>
+            <h2 className="text-5xl md:text-7xl tracking-[-0.055em] mb-6">{moreThanRap.name}</h2>
             <p className="text-white/80 mb-4">{moreThanRap.schedule}</p>
             <p className="mb-4">Instructors: {moreThanRap.instructors.join(' + ')}</p>
             <ul className="mb-6 text-sm space-y-1">
               {moreThanRap.deliverables.map((d, i) => <li key={i}>• {d}</li>)}
             </ul>
             <Link href="/more-than-rap" className="inline-block bg-white text-black px-6 py-3 text-sm font-medium rounded">Learn about the program</Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Signature scroll text - GSAP + Lenis per prompt (1 sequence) */}
-      <section className="border-y bg-neutral-950 text-white py-8 overflow-hidden">
-        <div className="container">
-          <div className="text-[13vw] leading-none font-semibold tracking-[-4px] flex justify-between opacity-20">
-            <span>RECORD.</span>
-            <span>CREATE.</span>
-            <span>RELEASE.</span>
-          </div>
-        </div>
+      <section className="border-y bg-neutral-950 text-white py-10 md:py-16 overflow-hidden" aria-hidden="true">
+        <motion.div
+          className="text-[clamp(4rem,13vw,12rem)] whitespace-nowrap leading-none font-semibold tracking-[-0.07em] opacity-20"
+          initial={{ x: '8%' }}
+          whileInView={{ x: '-18%' }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 1.4, ease: MOTION.easing }}
+        >
+          RECORD. CREATE. RELEASE. RECORD.
+        </motion.div>
       </section>
 
-      {/* Final CTA */}
-      <section className="container py-20 text-center">
-        <h2 className="text-5xl tracking-tighter mb-4">Ready to record?</h2>
+      <section className="container py-24 md:py-32 text-center">
+        <motion.h2
+          className="text-5xl md:text-7xl tracking-[-0.055em] mb-6"
+          initial={{ scale: 0.96 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: MOTION.normal, ease: MOTION.easing }}
+        >
+          Ready to record?
+        </motion.h2>
         <Link href="/contact" className="text-lg underline">Book a Session →</Link>
       </section>
     </main>
