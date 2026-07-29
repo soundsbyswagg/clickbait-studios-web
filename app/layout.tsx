@@ -5,6 +5,7 @@ import { SmoothScroll } from '@/components/motion/SmoothScroll';
 import { MotionProvider } from '@/components/motion/MotionProvider';
 import { MobileMenu } from '@/components/navigation/MobileMenu';
 import { PageShell } from '@/components/layout/PageShell';
+import { StructuredData } from '@/components/seo/StructuredData';
 import Cursor from '@/components/ui/Cursor';
 import Loader from '@/components/ui/Loader';
 import { ContactStrip } from '@/components/layout/ContactStrip';
@@ -85,6 +86,7 @@ export default function RootLayout({
         <Cursor />
         <div className="grain" aria-hidden="true" />
         <a href="#main" className="skip-link">Skip to content</a>
+        <StructuredData />
         <header className="border-b">
           <nav className="container flex items-center justify-between py-4" role="navigation" aria-label="Main navigation">
             <Link href="/" className="font-semibold tracking-tight" aria-label={`${siteConfig.name} - Home`}>
