@@ -49,6 +49,7 @@ export default function RootLayout({
           <div className="container">
             <p>{siteConfig.address} • {siteConfig.links.phone} • <a href={siteConfig.links.instagram} className="hover:underline">Instagram</a></p>
             <p className="mt-1">© {new Date().getFullYear()} Clickbait ENT. All rights reserved.</p>
+            <p className="mt-1">Preview deployment workflow verified.</p>
           </div>
         </footer>
       </body>
