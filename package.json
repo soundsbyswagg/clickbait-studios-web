@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "measure": "bash scripts/measure.sh"
   },
   "dependencies": {
     "framer-motion": "^12.43.0",
@@ -29,6 +30,19 @@
     "eslint-config-next": "16.2.12",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "@lhci/cli": "^0.14"
+  },
+  "lhci": {
+    "ci": {
+      "collect": {
+        "url": ["http://localhost:3000"],
+        "numberOfRuns": 1
+      },
+      "assert": {
+        "preset": "lighthouse:recommended",
+        "budgetFile": "./lighthouse-budget.json"
+      }
+    }
   }
 }

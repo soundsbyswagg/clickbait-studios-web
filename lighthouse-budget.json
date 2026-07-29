@@ -1,0 +1,17 @@
+{
+  "timings": [
+    { "metric": "first-contentful-paint", "budget": 2000 },
+    { "metric": "largest-contentful-paint", "budget": 2500 },
+    { "metric": "interactive", "budget": 3500 },
+    { "metric": "speed-index", "budget": 3000 }
+  ],
+  "resource-summary": [
+    { "resourceType": "script", "budget": 200000 }
+  ],
+  "categories": {
+    "performance": ["90", "100"],
+    "accessibility": ["90", "100"],
+    "best-practices": ["90", "100"],
+    "seo": ["90", "100"]
+  }
+}
