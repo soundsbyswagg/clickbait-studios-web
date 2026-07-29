@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import HeroMedia from '@/components/hero/HeroMedia';
+import { SplitText } from '@/components/hero/SplitText';
 import { services, rooms, moreThanRap } from '@/content/site';
 import { MOTION } from '@/lib/motion';
 
@@ -16,17 +18,14 @@ const tickerItems = [
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      <section className="min-h-[78vh] flex items-center border-b py-20 md:py-28">
+      <HeroMedia />
+
+      <section className="relative min-h-[78vh] flex items-center border-b py-20 md:py-28">
         <div className="container">
           <div className="max-w-4xl">
-            <motion.p
-              className="text-sm uppercase tracking-[3px] text-neutral-500 mb-5"
-              initial={{ y: 16 }}
-              animate={{ y: 0 }}
-              transition={{ duration: MOTION.normal, ease: MOTION.easing }}
-            >
+            <SplitText delay={0.4} className="text-sm uppercase tracking-[3px] text-muted mb-5">
               Atlanta • 24/7 Booking
-            </motion.p>
+            </SplitText>
 
             <div className="overflow-hidden">
               <motion.h1
@@ -35,12 +34,14 @@ export default function Home() {
                 animate={{ y: 0 }}
                 transition={{ duration: MOTION.slow, ease: MOTION.easing }}
               >
-                BOOK THE ROOM.<br />FINISH THE RECORD.
+                <SplitText delay={0.55} duration={1} stagger={0.06}>
+                  BOOK THE ROOM.<br />FINISH THE RECORD.
+                </SplitText>
               </motion.h1>
             </div>
 
             <motion.p
-              className="text-lg md:text-xl text-neutral-600 max-w-xl mb-9 leading-relaxed"
+              className="text-lg md:text-xl text-muted max-w-xl mb-9 leading-relaxed"
               initial={{ y: 24 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.12, duration: MOTION.normal, ease: MOTION.easing }}

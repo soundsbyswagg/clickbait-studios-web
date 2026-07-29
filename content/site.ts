@@ -5,6 +5,7 @@ export const siteConfig = {
   description: 'Atlanta recording built around the session. Engineer-assisted sessions, solo rooms, podcast/video, and the More Than Rap program.',
   url: 'https://clickbaitent.com',
   ogImage: '/og.jpg',
+  heroPoster: '/hero-poster.jpg',
   links: {
     instagram: 'https://www.instagram.com/clickbait.ent/',
     phone: '470-621-1417',
