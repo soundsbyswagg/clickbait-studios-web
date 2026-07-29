@@ -32,7 +32,7 @@ export default function FAQPage() {
         {faqs.map((faq, i) => (
           <div key={i}>
             <h3 className="font-medium text-lg mb-2">{faq.q}</h3>
-            <p className="text-neutral-600">{faq.a}</p>
+            <p className="text-muted">{faq.a}</p>
           </div>
         ))}
       </div>

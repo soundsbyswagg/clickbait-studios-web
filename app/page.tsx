@@ -57,13 +57,13 @@ export default function Home() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-black px-8 py-4 text-base font-medium text-white hover:bg-neutral-800 hover:-translate-y-1 motion-normal"
+                className="inline-flex items-center justify-center rounded-md bg-black px-8 py-4 text-base font-medium text-white hover:bg-card hover:-translate-y-1 motion-normal"
               >
                 Book a Session
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-md border border-neutral-300 px-8 py-4 text-base font-medium hover:border-black hover:-translate-y-1 motion-normal"
+                className="inline-flex items-center justify-center rounded-md border border-border px-8 py-4 text-base font-medium hover:border-black hover:-translate-y-1 motion-normal"
               >
                 Explore Services
               </Link>
@@ -87,7 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b py-6 bg-neutral-50 text-neutral-950">
+      <section className="border-b py-6 bg-card text-foreground">
         <div className="container grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
           {['24-hour booking by advance reservation', 'Engineer or solo options', 'Podcast & content room', 'Free parking • Atlanta'].map((text, index) => (
             <div key={index} className="flex items-center gap-2">
@@ -112,15 +112,15 @@ export default function Home() {
           {rooms.map((room, index) => (
             <motion.div
               key={room.name}
-              className="studio-card border border-neutral-300 p-7 md:p-10 rounded-lg"
+              className="studio-card border border-border p-7 md:p-10 rounded-lg"
               initial={{ y: 20 }}
               whileInView={{ y: 0 }}
               viewport={{ once: true, amount: 0.35 }}
               transition={{ delay: index * MOTION.stagger, duration: MOTION.normal }}
             >
-              <div className="text-xs uppercase tracking-widest text-neutral-500 mb-2">{room.name.toUpperCase()}</div>
+              <div className="text-xs uppercase tracking-widest text-muted mb-2">{room.name.toUpperCase()}</div>
               <h3 className="text-3xl tracking-tight mb-2">{room.capacity}</h3>
-              <p className="text-neutral-600 mb-6">{room.note}</p>
+              <p className="text-muted mb-6">{room.note}</p>
               <Link href="/contact" className="text-sm font-medium underline">Book {room.name}</Link>
             </motion.div>
           ))}
@@ -141,15 +141,15 @@ export default function Home() {
           {services.slice(0, 3).map((service, index) => (
             <motion.article
               key={service.slug}
-              className="studio-card border border-neutral-300 p-7 rounded-lg group"
+              className="studio-card border border-border p-7 rounded-lg group"
               initial={{ y: 28 }}
               whileInView={{ y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: index * MOTION.stagger, duration: MOTION.normal }}
             >
               <h3 className="font-medium text-xl mb-2 group-hover:underline">{service.title}</h3>
-              <p className="text-sm text-neutral-600 mb-4">{service.description}</p>
-              <div className="text-xs text-neutral-500 mb-4">{service.duration} • {service.startingPrice}</div>
+              <p className="text-sm text-muted mb-4">{service.description}</p>
+              <div className="text-xs text-muted mb-4">{service.duration} • {service.startingPrice}</div>
               <Link href="/contact" className="text-sm font-medium">{service.cta} →</Link>
             </motion.article>
           ))}
@@ -180,7 +180,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y bg-neutral-950 text-white py-10 md:py-16 overflow-hidden" aria-hidden="true">
+      <section className="border-y bg-card text-white py-10 md:py-16 overflow-hidden" aria-hidden="true">
         <motion.div
           className="text-[clamp(4rem,13vw,12rem)] whitespace-nowrap leading-none font-semibold tracking-[-0.07em] opacity-20"
           initial={{ x: '8%' }}

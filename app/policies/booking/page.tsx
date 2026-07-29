@@ -5,7 +5,7 @@ export default function BookingPolicyPage() {
     <main className="container py-12 max-w-3xl">
       <h1 className="text-5xl tracking-tight mb-8">Booking & Cancellation Policy</h1>
 
-      <div className="space-y-6 text-neutral-700">
+      <div className="space-y-6 text-muted">
         <div>
           <h2 className="font-medium mb-2">Deposits & No-Shows</h2>
           <p>Deposits are non-refundable for no-shows.</p>
@@ -36,7 +36,7 @@ export default function BookingPolicyPage() {
         </div>
       </div>
 
-      <p className="mt-8 text-sm text-neutral-500">
+      <p className="mt-8 text-sm text-muted">
         Full policy details (cancellation windows, refunds, guests, file liability, etc.) are pending final client confirmation.
       </p>
 

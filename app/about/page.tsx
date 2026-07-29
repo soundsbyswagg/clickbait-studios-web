@@ -5,7 +5,7 @@ export default function AboutPage() {
     <main className="container py-12 max-w-3xl">
       <h1 className="text-5xl tracking-tight mb-4">About Clickbait ENT</h1>
 
-      <div className="space-y-6 text-neutral-700">
+      <div className="space-y-6 text-muted">
         <p>
           Clickbait ENT is an Atlanta-based recording studio and creative program focused on
           helping artists finish records from first idea to release.
@@ -20,7 +20,7 @@ export default function AboutPage() {
           </ul>
         </div>
 
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm text-muted">
           Full bios and vision details pending client confirmation for public use.
         </p>
       </div>

@@ -5,9 +5,9 @@ export default function MoreThanRapPage() {
   return (
     <main className="container py-12">
       <h1 className="text-5xl tracking-tight mb-4">{moreThanRap.name}</h1>
-      <p className="text-xl text-neutral-600 mb-8">Curriculum-based youth creative program</p>
+      <p className="text-xl text-muted mb-8">Curriculum-based youth creative program</p>
 
-      <div className="max-w-2xl space-y-6 text-neutral-700">
+      <div className="max-w-2xl space-y-6 text-muted">
         <div>
           <h3 className="font-medium mb-1">Schedule</h3>
           <p>{moreThanRap.schedule}</p>
@@ -39,7 +39,7 @@ export default function MoreThanRapPage() {
         <Link href="/contact" className="inline-flex bg-black text-white px-6 py-3 rounded text-sm font-medium">Inquire about enrollment</Link>
       </div>
 
-      <p className="mt-8 text-sm text-neutral-500">
+      <p className="mt-8 text-sm text-muted">
         Age range, exact duration, pricing, and minor policies are pending client verification.
       </p>
     </main>

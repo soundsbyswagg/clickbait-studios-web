@@ -4,7 +4,7 @@ export default function TermsPage() {
   return (
     <main className="container py-12 max-w-3xl">
       <h1 className="text-5xl tracking-tight mb-8">Terms of Service</h1>
-      <p className="text-neutral-600">
+      <p className="text-muted">
         By booking with Clickbait ENT you agree to our studio rules, including but not limited to the booking and cancellation policy.
         Full terms are pending client legal review.
       </p>
