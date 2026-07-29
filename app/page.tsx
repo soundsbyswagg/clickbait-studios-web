@@ -111,7 +111,7 @@ export default function Home() {
 
       <section className="container py-20 md:py-28 border-b">
         <motion.h2
-          className="text-4xl md:text-6xl tracking-[-0.04em] mb-10"
+          className="text-4xl md:text-6xl tracking-[-0.04em] mb-10 animate-pop-in"
           initial={{ y: 28 }}
           whileInView={{ y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
@@ -119,6 +119,7 @@ export default function Home() {
         >
           Choose your room
         </motion.h2>
+        <p className="section-label text-muted mb-6">Rooms</p>
         <div className="grid md:grid-cols-2 gap-6">
           {rooms.map((room, index) => (
             <motion.div
@@ -129,6 +130,7 @@ export default function Home() {
               viewport={{ once: true, amount: 0.35 }}
               transition={{ delay: index * MOTION.stagger, duration: MOTION.normal }}
             >
+              <div className="uppercase text-xs tracking-widest text-muted mb-2">Room</div>
               <div className="text-xs uppercase tracking-widest text-muted mb-2">{room.name.toUpperCase()}</div>
               <h3 className="text-3xl tracking-tight mb-2">{room.capacity}</h3>
               <p className="text-muted mb-6">{room.note}</p>
