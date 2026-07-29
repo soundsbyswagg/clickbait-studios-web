@@ -7,20 +7,26 @@ import { useReducedMotion } from '@/lib/motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function ScrollTextMotion({ children }: { children: React.ReactNode }) {
+export function KineticType({
+  children,
+  text,
+}: {
+  children?: React.ReactNode;
+  text?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!ref.current || reduceMotion) return;
 
-    const lines = ref.current.querySelectorAll('.motion-line');
+    const chars = ref.current.querySelectorAll('.kinetic-char');
 
     gsap.fromTo(
-      lines,
-      { x: 0, opacity: 0.4, letterSpacing: '0.02em' },
+      chars,
+      { scale: 1, opacity: 0.5, letterSpacing: '0.02em' },
       {
-        x: (i) => (i % 2 === 0 ? -120 : 120),
+        scale: 1,
         opacity: 1,
         letterSpacing: '0em',
         ease: 'none',
@@ -34,9 +40,15 @@ export function ScrollTextMotion({ children }: { children: React.ReactNode }) {
     );
   }, [reduceMotion]);
 
+  const source = typeof children === 'string' ? children : text || '';
+
   return (
     <div ref={ref} className="overflow-hidden py-12 text-6xl font-semibold tracking-[-2px] text-neutral-200">
-      {children}
+      {source.split('').map((char, i) => (
+        <span key={i} className="kinetic-char inline-block">
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      ))}
     </div>
   );
 }
