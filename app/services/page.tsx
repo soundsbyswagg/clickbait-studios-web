@@ -1,4 +1,5 @@
 import { BookingGuard } from '@/components/booking/BookingGuard';
+import { WixReturnPath } from '@/components/booking/WixReturnPath';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { services } from '@/content/site';
 
@@ -18,6 +19,7 @@ export default function ServicesPage() {
       </div>
 
       <BookingGuard />
+      <WixReturnPath />
 
       <div className="mt-12 text-sm text-muted">
         Note: Exact pricing, engineer rates, and add-ons (mixing, mastering, revisions) are confirmed at booking.
