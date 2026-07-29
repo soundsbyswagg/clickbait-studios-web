@@ -7,6 +7,7 @@ import { SplitText } from '@/components/hero/SplitText';
 import { services, rooms, moreThanRap } from '@/content/site';
 import { MOTION } from '@/lib/motion';
 import { ServiceCard } from '@/components/services/ServiceCard';
+import { NavIndicator } from '@/components/navigation/NavIndicator';
 
 const tickerItems = [
   'Record in Atlanta',
@@ -70,6 +71,12 @@ export default function Home() {
               </Link>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-card py-4">
+        <div className="container">
+          <NavIndicator />
         </div>
       </section>
 
