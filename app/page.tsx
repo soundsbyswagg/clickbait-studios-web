@@ -69,6 +69,22 @@ export default function Home() {
               <AudioReactiveVisualizer />
             </div>
           </div>
+          <aside
+            className="relative mt-8 ml-auto w-full max-w-56 overflow-hidden rounded-lg border border-border bg-card shadow-lg"
+            aria-label="Session Status"
+          >
+            <div className="flex h-1.5 items-center justify-between border-b border-border bg-muted px-1.5 text-[5px] leading-none tracking-wide text-muted/50">
+              <span>Session Status</span>
+              <span className="flex gap-0.5" aria-hidden="true">
+                <span className="h-1 w-1 rounded-[1px] border border-border" />
+                <span className="h-1 w-1 rounded-[1px] border border-border" />
+                <span className="h-1 w-1 rounded-[1px] border border-border" />
+              </span>
+            </div>
+            <p className="p-4 text-xs text-muted/70">
+              Advance booking available
+            </p>
+          </aside>
         </div>
       </section>
 
