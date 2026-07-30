@@ -4,6 +4,7 @@ import Link from "next/link";
 import { services } from "@/content/site";
 import { externalLinkProps, inquiryRoutes } from "@/lib/routes";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
+import { WindowChrome } from "@/components/ui/WindowChrome";
 
 const serviceKeys = {
   "engineer-assisted": { title: "service.engineer.title", description: "service.engineer.description", price: "service.engineer.price", duration: "service.engineer.duration", cta: "service.engineer.cta" },
@@ -25,15 +26,8 @@ export function ServiceCard({
       : inquiryRoutes.custom);
   const keys = serviceKeys[service.slug as keyof typeof serviceKeys];
   return (
-    <article className="studio-card relative flex h-full flex-col overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-6 shadow-[0_8px_24px_rgba(0,0,0,0.22)]">
-      <div
-        className="absolute inset-x-0 top-0 flex h-1.5 items-center justify-end gap-0.5 border-b border-[#c0c0c0]/10 bg-[#c0c0c0]/[0.06] px-1.5"
-        aria-hidden="true"
-      >
-        <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-        <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-        <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-      </div>
+    <article className="studio-card relative flex h-full flex-col overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-6 pt-11 shadow-[0_8px_24px_rgba(0,0,0,0.22)]">
+      <WindowChrome inset />
       <h3 className="mb-2 text-xl font-semibold">{t(keys.title)}</h3>
       <p className="mb-4 text-sm text-muted">{t(keys.description)}</p>
       <p className="mb-5 text-sm">

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { BOOKING_URL, externalLinkProps, inquiryRoutes } from "@/lib/routes";
 import { useLanguage } from "@/components/i18n/LanguageProvider";
+import { WindowChrome } from "@/components/ui/WindowChrome";
 
 const intents = [
   {
@@ -41,16 +42,9 @@ export function IntentRouter() {
             key={intent.titleKey}
             href={intent.href}
             {...(intent.external ? externalLinkProps : {})}
-            className="studio-card relative min-h-36 overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-5 shadow-[0_8px_24px_rgba(0,0,0,0.22)] md:p-6"
+            className="studio-card relative min-h-36 overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-5 pt-10 shadow-[0_8px_24px_rgba(0,0,0,0.22)] md:p-6 md:pt-11"
           >
-            <span
-              className="absolute inset-x-0 top-0 flex h-1.5 items-center justify-end gap-0.5 border-b border-[#c0c0c0]/10 bg-[#c0c0c0]/[0.06] px-1.5"
-              aria-hidden="true"
-            >
-              <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-              <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-              <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-            </span>
+            <WindowChrome inset />
             <h3 className="mb-2 text-lg font-semibold">{t(intent.titleKey)}</h3>
             <p className="text-sm text-muted">{t(intent.descriptionKey)}</p>
           </Link>
