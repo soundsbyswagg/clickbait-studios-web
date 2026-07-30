@@ -7,6 +7,7 @@ import { Icon } from '@/components/ui/Icon';
 import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { useAnnouncer } from '@/components/a11y/Announcer';
+import { analyticsEvents, trackEvent } from '@/lib/analytics';
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -18,7 +19,11 @@ export function MobileMenu() {
   const announce = useAnnouncer();
 
   const closeMenu = useCallback(() => { setOpen(false); setExpanded(false); announce(t('nav.close')); }, [announce, t]);
-  const openMenu = useCallback(() => { setOpen(true); announce(t('nav.open')); }, [announce, t]);
+  const openMenu = useCallback(() => {
+    setOpen(true);
+    trackEvent(analyticsEvents.mobileMenuOpen, { language: document.documentElement.lang });
+    announce(t('nav.open'));
+  }, [announce, t]);
 
   useEffect(() => {
     const onOpen = () => openMenu();

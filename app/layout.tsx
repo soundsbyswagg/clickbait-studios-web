@@ -21,6 +21,7 @@ import { InstallPrompt } from '@/components/pwa/InstallPrompt';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { WebVitals } from '@/components/performance/WebVitals';
+import { AnalyticsEvents } from '@/components/analytics/AnalyticsEvents';
 import './globals.css';
 import { siteConfig } from '@/content/site';
 
@@ -102,6 +103,7 @@ export default function RootLayout({
                 <InstallPrompt />
                 <ContactStrip />
                 <WebVitals />
+                <AnalyticsEvents />
                 {isVercelBuild ? <Analytics /> : null}
                 {isVercelBuild ? <SpeedInsights /> : null}
               </ThemeProvider>

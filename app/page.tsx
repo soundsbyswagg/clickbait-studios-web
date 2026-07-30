@@ -10,6 +10,7 @@ import {
   TranslatedSplitText,
   TranslatedText,
 } from "@/components/i18n/TranslatedText";
+import { analyticsEvents } from "@/lib/analytics";
 
 export const metadata = metadataFor("/");
 
@@ -181,6 +182,8 @@ export default function Home() {
           </p>
           <Link
             href={inquiryRoutes.moreThanRap}
+            data-analytics-event={analyticsEvents.moreThanRapInquiryClick}
+            data-analytics-location="homepage"
             className="inline-flex min-h-11 items-center rounded-md bg-accent px-6 font-semibold text-accent-foreground"
           >
             <TranslatedText textKey="home.program.cta" fallback="Ask about the program" />

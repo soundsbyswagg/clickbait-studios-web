@@ -2,6 +2,7 @@
 
 import { useLanguage } from './LanguageProvider';
 import type { Language } from '@/lib/i18n';
+import { analyticsEvents } from '@/lib/analytics';
 
 function Flag({ language }: { language: Language }) {
   if (language === 'en') {
@@ -34,6 +35,8 @@ export function LanguageSwitcher() {
           className="language-option"
           aria-label={option === 'en' ? t('language.english') : t('language.spanish')}
           aria-pressed={language === option}
+          data-analytics-event={analyticsEvents.languageChange}
+          data-analytics-value={option}
           onClick={() => setLanguage(option)}
         >
           <Flag language={option} />

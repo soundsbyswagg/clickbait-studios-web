@@ -10,6 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:analytics:production": "cross-env PLAYWRIGHT_PRODUCTION=1 playwright test e2e/production-analytics.spec.ts",
+    "test:budgets": "node scripts/check-budgets.mjs",
     "measure": "lhci autorun --config=.lighthouserc.json",
     "analyze": "cross-env ANALYZE=true next build"
   },
