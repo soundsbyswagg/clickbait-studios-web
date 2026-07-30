@@ -1,9 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePageText } from '@/components/i18n/PageText';
 
 type Snapshot = { domReady: number; load: number; transfer: number };
 export function PerformanceSnapshot() {
+  const text = usePageText();
   const [snapshot, setSnapshot] = useState<Snapshot | null>(null);
   useEffect(() => {
     const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
@@ -16,11 +18,11 @@ export function PerformanceSnapshot() {
     }, 0);
     return () => window.clearTimeout(timer);
   }, []);
-  if (!snapshot) return <p className="text-muted">Collecting this page-load snapshot…</p>;
+  if (!snapshot) return <p className="text-muted">{text('performance.collecting')}</p>;
   return <dl className="grid gap-4 sm:grid-cols-3">
-    <Metric label="DOM ready" value={`${snapshot.domReady} ms`} />
-    <Metric label="Window load" value={`${snapshot.load} ms`} />
-    <Metric label="Transfer" value={`${snapshot.transfer} KB`} />
+    <Metric label={text('performance.domReady')} value={`${snapshot.domReady} ms`} />
+    <Metric label={text('performance.windowLoad')} value={`${snapshot.load} ms`} />
+    <Metric label={text('performance.transfer')} value={`${snapshot.transfer} KB`} />
   </dl>;
 }
 function Metric({ label, value }: { label: string; value: string }) {

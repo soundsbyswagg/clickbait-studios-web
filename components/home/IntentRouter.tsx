@@ -1,55 +1,47 @@
+'use client';
+
 import Link from "next/link";
 import { BOOKING_URL, externalLinkProps, inquiryRoutes } from "@/lib/routes";
+import { useLanguage } from "@/components/i18n/LanguageProvider";
 
 const intents = [
   {
-    label: "Engineer-Assisted Session",
+    titleKey: "home.intent.engineer.title" as const,
     href: BOOKING_URL,
     external: true,
-    description: "Record with standard in-session engineering support.",
+    descriptionKey: "home.intent.engineer.description" as const,
   },
   {
-    label: "Studio Rental",
+    titleKey: "home.intent.rental.title" as const,
     href: BOOKING_URL,
     external: true,
-    description: "Book studio time without an engineer.",
+    descriptionKey: "home.intent.rental.description" as const,
   },
   {
-    label: "Podcast or Content Project",
+    titleKey: "home.intent.podcast.title" as const,
     href: inquiryRoutes.custom,
     external: false,
-    description: "Start a custom project inquiry.",
-  },
-  {
-    label: "More Than Rap",
-    href: inquiryRoutes.moreThanRap,
-    external: false,
-    description: "Ask about the youth creative-development program.",
-  },
-  {
-    label: "Consultation",
-    href: inquiryRoutes.consultation,
-    external: false,
-    description: "Discuss strategy, production, or artist development.",
+    descriptionKey: "home.intent.podcast.description" as const,
   },
 ];
 
 export function IntentRouter() {
+  const { t } = useLanguage();
   return (
-    <section className="container border-b border-border py-20 md:py-28">
-      <h2 className="mb-3 text-3xl tracking-[-0.04em] md:text-4xl">
-        What do you want to create?
+    <section className="container border-b border-border py-16 md:py-24">
+      <h2 className="mb-2 text-3xl tracking-[-0.04em] md:text-4xl">
+        {t('home.intents.title')}
       </h2>
-      <p className="mb-8 max-w-2xl text-muted">
-        Choose the path that matches your project.
+      <p className="mb-6 max-w-2xl text-muted">
+        {t('home.intents.description')}
       </p>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {intents.map((intent) => (
           <Link
-            key={intent.label}
+            key={intent.titleKey}
             href={intent.href}
             {...(intent.external ? externalLinkProps : {})}
-            className="studio-card relative overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-6 shadow-[0_8px_24px_rgba(0,0,0,0.22)]"
+            className="studio-card relative min-h-36 overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-5 shadow-[0_8px_24px_rgba(0,0,0,0.22)] md:p-6"
           >
             <span
               className="absolute inset-x-0 top-0 flex h-1.5 items-center justify-end gap-0.5 border-b border-[#c0c0c0]/10 bg-[#c0c0c0]/[0.06] px-1.5"
@@ -59,8 +51,8 @@ export function IntentRouter() {
               <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
               <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
             </span>
-            <h3 className="mb-2 text-lg font-semibold">{intent.label}</h3>
-            <p className="text-sm text-muted">{intent.description}</p>
+            <h3 className="mb-2 text-lg font-semibold">{t(intent.titleKey)}</h3>
+            <p className="text-sm text-muted">{t(intent.descriptionKey)}</p>
           </Link>
         ))}
       </div>

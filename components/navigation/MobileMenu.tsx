@@ -73,12 +73,12 @@ export function MobileMenu() {
           if (delta < -70) setExpanded(true);
         }}
       >
-        <button type="button" className="sheet-handle" onClick={() => setExpanded((value) => !value)} aria-label={expanded ? 'Collapse navigation sheet' : 'Expand navigation sheet'} />
+        <button type="button" className="sheet-handle" onClick={() => setExpanded((value) => !value)} aria-label={expanded ? t('nav.collapse') : t('nav.expand')} />
         <div className="flex items-center justify-between border-b border-border px-5 pb-4">
           <strong>{siteConfig.name}</strong>
           <button type="button" className="icon-button" onClick={closeMenu} aria-label={t('nav.close')}><Icon name="close" /></button>
         </div>
-        <nav className="mobile-sheet-links" aria-label="Mobile navigation">
+        <nav className="mobile-sheet-links" aria-label={t('nav.mobile')}>
           {navigation.map((item) => <Link key={item.href} href={item.href} onClick={closeMenu}>{t(navKey(item.label))}<Icon name="arrow-right" size={20} /></Link>)}
         </nav>
         <div className="px-5 pb-6"><LanguageSwitcher /></div>

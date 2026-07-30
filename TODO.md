@@ -403,6 +403,19 @@ Lighthouse CI HTML report; `webpack-bundle-analyzer` treemap; external link audi
 
 This phase does not replace Wix Bookings, change DNS, invent client claims or statistics, create backend infrastructure beyond Next.js static generation, or add unverified social proof. All copy and pricing display remain bound by the client-approved baseline and content contract tests.
 
+## Post-Audit Deferred Backlog (2026-07-29)
+
+These items were reviewed after the Classes 1–26 audit and are intentionally deferred. Do not create placeholder UI for them.
+
+- **Approved media and proof (Classes 1, 7, 8, 9, 12):** hero photography/video, reels, testimonials, client logos, audio examples, social feeds, and portfolio entries require client-supplied assets, publication releases, and verified claims.
+- **Native conversion infrastructure (Classes 6, 10, 13):** availability, multi-step forms, deposits, SMS, uploads, CAPTCHA, calendar integration, advanced consultation gating, and price tools require a decision to replace or integrate with Wix plus provider credentials and data-handling requirements.
+- **More Than Rap expansion (Class 11):** alumni media, testimonials, instructor biographies, and an application workflow require approved program content and enrollment requirements.
+- **Unsupported brochure additions (Classes 19, 20):** search, accounts, newsletter signup, map embeds, and social-proof footer content are outside the approved public brochure scope unless the client requests them.
+- **Media calibration (Class 22):** color calibration and video normalization depend on final approved source photography/video.
+- **Authenticated platform work (Classes 23, 24):** collaboration, track comments, streaming, dashboards, signed delivery links, format selection, and expiring downloads require separate product requirements, authentication, storage, database design, authorization, and operating budget.
+- **Conditional compliance (Class 25):** cookie consent, CSRF, rate limiting, and NDA workflows become applicable only if nonessential cookies, state-changing APIs, or document workflows are introduced.
+- **External observability (Class 26):** Sentry and stable visual-regression baselines require monitoring ownership/credentials and finalized visual media.
+
 ## Production Acceptance Corrections
 
 - PASS — Approved room definitions, capacities, pricing, booking lead time, walk-in hours, contact details, and More Than Rap facts are applied.

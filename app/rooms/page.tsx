@@ -2,6 +2,8 @@ import Link from "next/link";
 import { rooms } from "@/content/site";
 import { BOOKING_URL, externalLinkProps } from "@/lib/routes";
 import { metadataFor } from "@/lib/seo";
+import { PageText } from "@/components/i18n/PageText";
+import { TranslatedText } from "@/components/i18n/TranslatedText";
 
 export const metadata = metadataFor("/rooms");
 
@@ -9,11 +11,10 @@ export default function RoomsPage() {
   return (
     <div className="container py-12 md:py-20">
       <h1 className="mb-4 text-5xl tracking-tight md:text-6xl">
-        Choose your room
+        <PageText id="rooms.title" />
       </h1>
       <p className="mb-10 max-w-2xl text-xl text-muted">
-        Both rooms use the same core equipment. Choose based on group size and
-        the amount of space your session needs.
+        <PageText id="rooms.intro" />
       </p>
       <div className="grid gap-6 md:grid-cols-2">
         {rooms.map((room) => (
@@ -30,24 +31,22 @@ export default function RoomsPage() {
               <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
             </div>
             <p className="mb-2 text-xs uppercase tracking-widest text-muted">
-              {room.name}
+              <TranslatedText textKey={room.name === "A Room" ? "home.room.a.name" : "home.room.b.name"} fallback={room.name} />
             </p>
-            <h2 className="mb-4 text-4xl tracking-tight">{room.capacity}</h2>
-            <p className="mb-6 text-muted">{room.note}</p>
+            <h2 className="mb-4 text-4xl tracking-tight"><TranslatedText textKey={room.name === "A Room" ? "home.room.a.capacity" : "home.room.b.capacity"} fallback={room.capacity} /></h2>
+            <p className="mb-6 text-muted"><TranslatedText textKey={room.name === "A Room" ? "home.room.a.note" : "home.room.b.note"} fallback={room.note} /></p>
             <Link
               href={BOOKING_URL}
               {...externalLinkProps}
               className="inline-flex min-h-11 items-center font-semibold underline"
             >
-              Book {room.name} →
+              <TranslatedText textKey="home.room.book" fallback="Book" /> <TranslatedText textKey={room.name === "A Room" ? "home.room.a.name" : "home.room.b.name"} fallback={room.name} /> →
             </Link>
           </article>
         ))}
       </div>
       <p className="mt-8 text-sm text-muted">
-        Standard studio clients must be at least 18. Sessions require at least
-        four hours of advance booking. See the booking policy for arrival and
-        conduct rules.
+        <PageText id="rooms.notice" />
       </p>
     </div>
   );
