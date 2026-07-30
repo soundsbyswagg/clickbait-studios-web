@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { BOOKING_URL, externalLinkProps } from '@/lib/routes';
+import { metadataFor } from '@/lib/seo';
+
+export const metadata = metadataFor('/about');
 
 export default function AboutPage() {
   return (

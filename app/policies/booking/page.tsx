@@ -1,3 +1,7 @@
+import { metadataFor } from '@/lib/seo';
+
+export const metadata = metadataFor('/policies/booking');
+
 export default function BookingPolicyPage() {
   const sections = [
     ['Booking and arrival', 'Book at least four hours before the requested start time. Automated arrival instructions are sent by text after booking. Customers have a 15-minute lateness window, and booked time is not automatically extended for late arrival.'],

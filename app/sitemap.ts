@@ -1,26 +1,13 @@
+import type { MetadataRoute } from 'next';
 import { siteConfig } from '@/content/site';
-import { MetadataRoute } from 'next';
+import { routeSeo } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    '',
-    '/services',
-    '/rooms',
-    '/portfolio',
-    '/more-than-rap',
-    '/about',
-    '/faq',
-    '/contact',
-    '/creators-club',
-    '/policies/booking',
-    '/policies/privacy',
-    '/policies/terms',
-  ];
-
-  return routes.map((route) => ({
-    url: `${siteConfig.url}${route}`,
+  return Object.keys(routeSeo).filter((path) => !['/offline'].includes(path)).map((path) => ({
+    url: new URL(path, siteConfig.url).toString(),
     lastModified: new Date('2026-07-29'),
-    changeFrequency: route === '' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1 : 0.8,
+    changeFrequency: path === '/' ? 'weekly' : 'monthly',
+    priority: path === '/' ? 1 : ['/services', '/rooms', '/contact'].includes(path) ? 0.9 : 0.7,
+    alternates: { languages: { en: new URL(path, siteConfig.url).toString(), es: new URL(path, siteConfig.url).toString() } },
   }));
 }

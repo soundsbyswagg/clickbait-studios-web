@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { metadataFor } from '@/lib/seo';
+
+export const metadata = metadataFor('/policies/privacy');
 
 export default function PrivacyPolicyPage() {
   return (

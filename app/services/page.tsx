@@ -1,11 +1,9 @@
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { PricingDetails } from '@/components/services/PricingDetails';
 import { services } from '@/content/site';
+import { metadataFor } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Services | Clickbait ENT',
-  description: 'Recording sessions, studio rental, podcast and content projects, and custom creative services at Clickbait ENT.',
-};
+export const metadata = metadataFor('/services');
 
 export default function ServicesPage() {
   return (

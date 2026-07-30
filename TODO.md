@@ -414,6 +414,60 @@ This phase does not replace Wix Bookings, change DNS, invent client claims or st
 - BLOCKED — CONTACT_BACKEND_DESTINATION: no approved server-side inquiry destination or environment contract exists. Phone and Instagram provide the honest custom-inquiry path.
 - PENDING MANUAL BROWSER QA — Mobile Safari, Android, responsive visual acceptance, keyboard interaction, and live production presentation.
 
+## Experience Upgrade — Easiest to Hardest
+
+### Completed foundations
+
+- DONE — Expanded semantic color, typography, spacing, elevation, contrast, and motion tokens.
+- DONE — Removed residual `neutral-*` utility usage from application components.
+- DONE — Added shared 24px icon system for navigation, calls, booking, social, location, media, and controls.
+- DONE — Added typography presets and Stack, Inline, and Cluster layout primitives.
+- DONE — Restored route-aware themes through a single content map and HTML data attributes.
+- DONE — Rebuilt the route loader as a sub-800ms audio-waveform transition.
+- DONE — Reworked the custom cursor to use a ref and compositor transform instead of React state on every pointer move.
+- DONE — Added a motion-safe per-character SplitText sequence that leaves meaningful text visible before hydration.
+- DONE — Added a CSS cinematic hero fallback and media-aware video background component.
+- DONE — Added a canvas waveform visualizer with optional Web Audio `AnalyserNode` support.
+
+### Completed mobile and accessibility work
+
+- DONE — Rebuilt mobile navigation as a 60%/90% bottom sheet.
+- DONE — Added vertical swipe expansion and dismissal plus edge-swipe opening.
+- DONE — Preserved focus trapping, Escape close, Back close, link close, and body scroll lock.
+- DONE — Added immediate mobile booking visibility with scroll-direction hiding.
+- DONE — Added expandable phone, booking, Instagram, and arrival quick actions.
+- DONE — Applied global 44px minimum control height and active-state tactile feedback.
+- DONE — Added main, navigation, and footer skip links.
+- DONE — Added global focus-visible treatment and stronger contrast preferences.
+- DONE — Added reduced-motion context for Framer Motion and CSS animation shutdown.
+- DONE — Added high-contrast and 14/16/18px base font-size controls.
+- DONE — Added a polite live announcer for interactive UI changes.
+- DONE — Added an honest accessibility-support route without claiming unverified conformance.
+
+### Completed language, SEO, performance, and offline work
+
+- DONE — Added persistent English/Spanish language state under `clickbait:lang`.
+- DONE — Added real SVG United States and Spain flags, language labels, and `aria-pressed` state.
+- DONE — Kept English as the static/server default and updated `<html lang>` after user selection.
+- DONE — Added matched EN/ES dictionaries with source-contract tests against unsupported claims.
+- DONE — Added translated header, mobile navigation, calls to action, accessibility labels, and homepage hero content.
+- DONE — Added canonical metadata, route descriptions, keywords, hreflang entries, dynamic OG images, and Twitter cards.
+- DONE — Added route-aware BreadcrumbList data and verified LocalBusiness service catalog data.
+- DONE — Added sitemap priorities and robots controls for internal/API surfaces.
+- DONE — Added Vercel Analytics, Speed Insights, development Web Vitals logging, and a local performance snapshot route.
+- DONE — Added bundle analysis and package-import optimization.
+- DONE — Added Lighthouse configuration and a pull-request CI audit.
+- DONE — Added a web manifest, SVG app icons, offline route, conservative same-origin service worker, and install prompt.
+
+### Evidence-dependent or infrastructure-blocked
+
+- BLOCKED — Approved hero photography, background video, BTS reels, and portfolio audio are not present; the site uses intentional fallbacks.
+- BLOCKED — MusicRecording and VideoObject structured data require real published works and media.
+- BLOCKED — More Than Rap Event structured data requires an approved start date.
+- BLOCKED — Background form synchronization cannot exist until an approved inquiry backend exists.
+- BLOCKED — Booking reminders and push delivery require a consented notification service and booking-confirmation integration.
+- BLOCKED — Measured Lighthouse, Core Web Vitals, 60fps, and device-specific targets require post-deployment browser and field testing.
+
 ---
 
 ## [16] P0 Intent-based homepage entry paths

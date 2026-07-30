@@ -1,11 +1,8 @@
-import type { Metadata } from 'next';
 import { ContactSidebar } from '@/components/contact/ContactSidebar';
 import { PolicySummary } from '@/components/policies/PolicySummary';
+import { metadataFor } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Contact | Clickbait ENT',
-  description: 'Book a session or contact Clickbait ENT by phone or Instagram.',
-};
+export const metadata = metadataFor('/contact');
 
 export default async function ContactPage({
   searchParams,

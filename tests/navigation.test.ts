@@ -17,10 +17,9 @@ describe('navigation and booking contract', () => {
 
   it('provides an accessible visual hamburger', () => {
     const source = fs.readFileSync('components/navigation/MobileMenu.tsx', 'utf8');
-    expect(source).toContain('aria-label="Open navigation"');
+    expect(source).toContain("aria-label={t('nav.open')}");
     expect(source).toContain('aria-expanded={open}');
-    expect(source).toMatch(/flex w-6 flex-col/);
-    expect(source).not.toMatch(/>\s*Menu\s*</);
+    expect(source).toContain('<Icon name="menu"');
   });
 });
 

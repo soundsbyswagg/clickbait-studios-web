@@ -1,123 +1,96 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { siteConfig } from '@/content/site';
-import { navigation } from '@/content/site';
+import { navigation, siteConfig } from '@/content/site';
+import { Icon } from '@/components/ui/Icon';
+import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
+import { useLanguage } from '@/components/i18n/LanguageProvider';
+import { useAnnouncer } from '@/components/a11y/Announcer';
 
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
-  const previousFocusRef = useRef<HTMLButtonElement | null>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const touchStart = useRef(0);
+  const { t } = useLanguage();
+  const announce = useAnnouncer();
 
-  const closeMenu = () => setOpen(false);
+  const closeMenu = useCallback(() => { setOpen(false); setExpanded(false); announce(t('nav.close')); }, [announce, t]);
+  const openMenu = useCallback(() => { setOpen(true); announce(t('nav.open')); }, [announce, t]);
+
+  useEffect(() => {
+    const onOpen = () => openMenu();
+    window.addEventListener('clickbait:open-menu', onOpen);
+    return () => window.removeEventListener('clickbait:open-menu', onOpen);
+  }, [openMenu]);
 
   useEffect(() => {
     if (!open) return;
-
     const panel = panelRef.current;
+    const trigger = triggerRef.current;
     if (!panel) return;
-
-    const focusable = panel.querySelectorAll<HTMLElement>(
-      'a, button, [tabindex]:not([tabindex="-1"])'
-    );
+    const focusable = [...panel.querySelectorAll<HTMLElement>('a, button:not([disabled])')];
     const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        closeMenu();
-        return;
-      }
-
-      if (e.key === 'Tab') {
-        if (e.shiftKey) {
-          if (document.activeElement === first) {
-            e.preventDefault();
-            last?.focus();
-          }
-        } else {
-          if (document.activeElement === last) {
-            e.preventDefault();
-            first?.focus();
-          }
-        }
+    const last = focusable.at(-1);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { event.preventDefault(); closeMenu(); }
+      if (event.key === 'Tab' && focusable.length) {
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
       }
     };
-
-    const onPopState = () => {
-      closeMenu();
-    };
-
+    const onPopState = () => closeMenu();
     document.addEventListener('keydown', onKeyDown);
     window.addEventListener('popstate', onPopState);
-
-    previousFocusRef.current = document.activeElement as HTMLButtonElement | null;
-    first?.focus();
-
     document.body.style.overflow = 'hidden';
-
+    first?.focus();
     return () => {
       document.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('popstate', onPopState);
       document.body.style.overflow = '';
-      previousFocusRef.current?.focus();
+      trigger?.focus();
     };
-  }, [open]);
+  }, [closeMenu, open]);
 
-  return (
-    <>
-      <button
-        type="button"
-        className="md:hidden inline-flex size-11 items-center justify-center rounded-md border border-border bg-card text-foreground"
-        onClick={() => setOpen(true)}
-        aria-expanded={open}
-        aria-controls="mobile-menu-panel"
-        aria-label="Open navigation"
+  return <>
+    <button ref={triggerRef} type="button" className="icon-button md:hidden" onClick={openMenu} aria-expanded={open} aria-controls="mobile-menu-panel" aria-label={t('nav.open')}>
+      <Icon name="menu" />
+    </button>
+    {open ? <div className="mobile-sheet-backdrop" role="presentation" onPointerDown={(event) => { if (event.currentTarget === event.target) closeMenu(); }}>
+      <div
+        ref={panelRef}
+        id="mobile-menu-panel"
+        className={`mobile-sheet ${expanded ? 'mobile-sheet--expanded' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t('nav.open')}
+        onTouchStart={(event) => { touchStart.current = event.touches[0].clientY; }}
+        onTouchEnd={(event) => {
+          const delta = event.changedTouches[0].clientY - touchStart.current;
+          if (delta > 80) closeMenu();
+          if (delta < -70) setExpanded(true);
+        }}
       >
-        <span className="flex w-6 flex-col gap-1.5" aria-hidden="true">
-          <span className="h-0.5 w-full bg-current" />
-          <span className="h-0.5 w-full bg-current" />
-          <span className="h-0.5 w-full bg-current" />
-        </span>
-      </button>
-
-      {open && (
-        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-          <div className="container flex items-center justify-between py-4">
-            <span className="font-semibold tracking-tight text-lg">{siteConfig.name}</span>
-            <button
-              type="button"
-              className="inline-flex size-11 items-center justify-center rounded-md border border-border text-foreground"
-              onClick={closeMenu}
-              aria-label="Close navigation"
-            >
-              <span className="relative block size-6" aria-hidden="true">
-                <span className="absolute left-0 top-1/2 h-0.5 w-6 rotate-45 bg-current" />
-                <span className="absolute left-0 top-1/2 h-0.5 w-6 -rotate-45 bg-current" />
-              </span>
-            </button>
-          </div>
-
-          <div
-            ref={panelRef}
-            id="mobile-menu-panel"
-            className="container flex flex-col gap-6 py-12"
-          >
-            {navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-3xl tracking-tight"
-                onClick={closeMenu}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
+        <button type="button" className="sheet-handle" onClick={() => setExpanded((value) => !value)} aria-label={expanded ? 'Collapse navigation sheet' : 'Expand navigation sheet'} />
+        <div className="flex items-center justify-between border-b border-border px-5 pb-4">
+          <strong>{siteConfig.name}</strong>
+          <button type="button" className="icon-button" onClick={closeMenu} aria-label={t('nav.close')}><Icon name="close" /></button>
         </div>
-      )}
-    </>
-  );
+        <nav className="mobile-sheet-links" aria-label="Mobile navigation">
+          {navigation.map((item) => <Link key={item.href} href={item.href} onClick={closeMenu}>{t(navKey(item.label))}<Icon name="arrow-right" size={20} /></Link>)}
+        </nav>
+        <div className="px-5 pb-6"><LanguageSwitcher /></div>
+      </div>
+    </div> : null}
+  </>;
+}
+
+function navKey(label: string) {
+  const keys: Record<string, Parameters<ReturnType<typeof useLanguage>['t']>[0]> = {
+    Home: 'nav.home', Services: 'nav.services', Rooms: 'nav.rooms', Work: 'nav.work',
+    'More Than Rap': 'nav.program', 'Creators Club': 'nav.club', About: 'nav.about', FAQ: 'nav.faq', Contact: 'nav.contact',
+  };
+  return keys[label] ?? 'nav.home';
 }

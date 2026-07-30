@@ -1,9 +1,7 @@
 import { siteConfig } from '@/content/site';
+import { metadataFor } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Arrival | Clickbait ENT',
-  description: 'Verified location and arrival information for Clickbait ENT.',
-};
+export const metadata = metadataFor('/arrival');
 
 export default function ArrivalPage() {
   return (
