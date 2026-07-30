@@ -16,11 +16,12 @@ export function SplitText({ children, className = '', delay = 0, stagger = 0.025
   const reducedMotion = useReducedMotionPreference();
   if (typeof children !== 'string' || reducedMotion) return <span className={className}>{children}</span>;
 
-  return <span className={`split-text ${className}`} aria-label={children}>
+  return <span className={`split-text ${className}`}>
+    <span className="sr-only">{children}</span>
+    <span aria-hidden="true">
     {Array.from(children).map((character, index) => (
       <motion.span
         key={`${character}-${index}`}
-        aria-hidden="true"
         className="split-character"
         initial={false}
         animate={{ y: [0, '-0.16em', 0], opacity: [1, 0.72, 1] }}
@@ -31,5 +32,6 @@ export function SplitText({ children, className = '', delay = 0, stagger = 0.025
         {character === ' ' ? '\u00A0' : character}
       </motion.span>
     ))}
+    </span>
   </span>;
 }
