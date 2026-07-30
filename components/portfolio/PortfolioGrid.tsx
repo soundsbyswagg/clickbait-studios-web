@@ -4,28 +4,30 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { site } from '@/content/site';
 import { MediaLightbox } from './MediaLightbox';
+import { usePageText } from '@/components/i18n/PageText';
 
 const approvedItems = (site.portfolioItems ?? []).filter((item) => item.permission);
 
 export function PortfolioGrid() {
+  const t = usePageText();
   const [lightbox, setLightbox] = useState<{ src: string; caption: string } | null>(null);
 
   if (approvedItems.length === 0) {
     return (
       <div className="container py-20 md:py-28 text-center">
-        <h1 className="text-5xl md:text-6xl tracking-[-0.04em] mb-6">Work</h1>
+        <h1 className="text-5xl md:text-6xl tracking-[-0.04em] mb-6">{t('portfolio.title')}</h1>
         <p className="text-muted max-w-2xl mx-auto mb-8">
-          View current sessions and project work through the official Clickbait ENT Instagram.
+          {t('portfolio.empty')}
         </p>
-        <a href="https://www.instagram.com/clickbait.ent/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center font-semibold underline">View @clickbait.ent on Instagram</a>
+        <a href="https://www.instagram.com/clickbait.ent/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center font-semibold underline">{t('portfolio.instagram')}</a>
       </div>
     );
   }
 
   return (
     <div className="container py-20 md:py-28">
-      <h1 className="text-5xl md:text-6xl tracking-[-0.04em] mb-6">Work</h1>
-      <p className="text-muted max-w-2xl mb-10">Artist sessions, completed tracks, BTS, and community playlist.</p>
+      <h1 className="text-5xl md:text-6xl tracking-[-0.04em] mb-6">{t('portfolio.title')}</h1>
+      <p className="text-muted max-w-2xl mb-10">{t('portfolio.intro')}</p>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {approvedItems.map((item) => (
           <button
@@ -38,7 +40,7 @@ export function PortfolioGrid() {
               {item.type === 'image' ? (
                 <Image src={item.src} alt={item.caption} fill className="object-cover" />
               ) : (
-                <div className="flex h-full items-center justify-center text-sm text-muted">Video preview</div>
+                <div className="flex h-full items-center justify-center text-sm text-muted">{t('portfolio.video')}</div>
               )}
             </div>
             <div className="p-5">

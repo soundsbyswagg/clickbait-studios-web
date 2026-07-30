@@ -8,6 +8,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date('2026-07-29'),
     changeFrequency: path === '/' ? 'weekly' : 'monthly',
     priority: path === '/' ? 1 : ['/services', '/rooms', '/contact'].includes(path) ? 0.9 : 0.7,
-    alternates: { languages: { en: new URL(path, siteConfig.url).toString(), es: new URL(path, siteConfig.url).toString() } },
   }));
 }
