@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { site } from '@/content/site';
 import { MediaLightbox } from './MediaLightbox';
 import { usePageText } from '@/components/i18n/PageText';
+import { analyticsEvents, trackEvent } from '@/lib/analytics';
 
 const approvedItems = (site.portfolioItems ?? []).filter((item) => item.permission);
 
@@ -34,7 +35,10 @@ export function PortfolioGrid() {
             key={item.id}
             type="button"
             className="studio-card group relative overflow-hidden rounded-lg border border-border bg-card p-0 text-left"
-            onClick={() => setLightbox({ src: item.src, caption: item.caption })}
+            onClick={() => {
+              trackEvent(analyticsEvents.portfolioOpen, { item_id: item.id, media_type: item.type });
+              setLightbox({ src: item.src, caption: item.caption });
+            }}
           >
             <div className="aspect-video relative bg-card">
               {item.type === 'image' ? (

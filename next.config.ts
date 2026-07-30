@@ -18,7 +18,7 @@ const contentSecurityPolicy = [
 
 const nextConfig: NextConfig = {
   experimental: {
-    optimizePackageImports: ['framer-motion', 'gsap'],
+    optimizePackageImports: ['framer-motion'],
   },
   images: {
     remotePatterns: [

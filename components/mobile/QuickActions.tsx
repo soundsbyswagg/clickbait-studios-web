@@ -6,6 +6,7 @@ import { siteConfig } from '@/content/site';
 import { BOOKING_URL, externalLinkProps } from '@/lib/routes';
 import { Icon } from '@/components/ui/Icon';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
+import { analyticsEvents } from '@/lib/analytics';
 
 export function QuickActions() {
   const [open, setOpen] = useState(false);
@@ -35,7 +36,7 @@ export function QuickActions() {
   }, [open]);
   return <div ref={rootRef} className={`quick-actions md:hidden ${open ? 'quick-actions--open' : ''}`}>
     <nav id="quick-actions-list" className="quick-actions-list" aria-label={t('quick.label')} aria-hidden={!open}>
-      {actions.map((action) => <Link key={action.label} href={action.href} {...(action.external ? externalLinkProps : {})} tabIndex={open ? 0 : -1} aria-label={action.label} onClick={() => setOpen(false)}><Icon name={action.icon} /><span>{action.label}</span></Link>)}
+      {actions.map((action) => <Link key={action.label} href={action.href} {...(action.external ? externalLinkProps : {})} tabIndex={open ? 0 : -1} aria-label={action.label} data-analytics-event={analyticsEvents.quickActionSelect} data-analytics-value={action.icon} onClick={() => setOpen(false)}><Icon name={action.icon} /><span>{action.label}</span></Link>)}
     </nav>
     <button ref={triggerRef} type="button" className="quick-actions-trigger" aria-expanded={open} aria-controls="quick-actions-list" aria-label={t('quick.open')} onClick={() => setOpen((value) => !value)}><Icon name={open ? 'close' : 'plus'} /></button>
   </div>;

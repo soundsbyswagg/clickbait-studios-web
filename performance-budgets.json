@@ -1,0 +1,27 @@
+{
+  "basis": "Production build captured 2026-07-29 after analytics event instrumentation",
+  "maxRouteDeltaPercent": 10,
+  "largestChunkBytes": 321202,
+  "totalCssBytes": 38905,
+  "translationCatalogBytes": 29293,
+  "runtimeDependencies": 9,
+  "forbiddenDependencies": ["gsap"],
+  "routes": {
+    "/": {
+      "manifest": ".next/server/app/page_client-reference-manifest.js",
+      "baselineBytes": 1026535
+    },
+    "/services": {
+      "manifest": ".next/server/app/services/page_client-reference-manifest.js",
+      "baselineBytes": 1024925
+    },
+    "/rooms": {
+      "manifest": ".next/server/app/rooms/page_client-reference-manifest.js",
+      "baselineBytes": 1020615
+    },
+    "/contact": {
+      "manifest": ".next/server/app/contact/page_client-reference-manifest.js",
+      "baselineBytes": 1020930
+    }
+  }
+}
