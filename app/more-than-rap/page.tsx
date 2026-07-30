@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import { moreThanRap } from '@/content/site';
 import { inquiryRoutes } from '@/lib/routes';
+import { metadataFor } from '@/lib/seo';
 
-export const metadata = {
-  title: 'More Than Rap | Clickbait ENT',
-  description: 'Structured youth creative-development curriculum for ages 4 through 15.',
-};
+export const metadata = metadataFor('/more-than-rap');
 
 export default function MoreThanRapPage() {
   return (

@@ -93,6 +93,15 @@ export const navigation = [
   { label: 'Contact', href: '/contact' },
 ];
 
+export const pageThemes = {
+  '/': 'studio',
+  '/rooms': 'rooms',
+  '/services': 'services',
+  '/portfolio': 'work',
+  '/more-than-rap': 'program',
+  '/contact': 'contact',
+} as const;
+
 export const site = {
   brand: { name: siteConfig.name, description: siteConfig.description },
   contact: { phone: siteConfig.links.phone, instagram: siteConfig.links.instagram, address: siteConfig.address },
@@ -101,6 +110,7 @@ export const site = {
   moreThanRap,
   bookingBaseUrl: siteConfig.bookingBaseUrl,
   portfolioItems: [] as z.infer<typeof PortfolioItemSchema>[],
+  pageThemes,
 };
 
 SiteSchema.parse(site);

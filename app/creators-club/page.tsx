@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { metadataFor } from '@/lib/seo';
+
+export const metadata = metadataFor('/creators-club');
 
 export default function CreatorsClubPage() {
   return (

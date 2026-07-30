@@ -13,6 +13,17 @@
 - Defined the semantic monochrome theme contract and corrected metadata and structured data.
 - Added automated customer-facing source and content-contract tests.
 
+### Experience system upgrade
+- Added a route-aware monochrome design system with typography, spacing, shadow, icon, focus, contrast, and reduced-motion primitives.
+- Added persistent English/Spanish switching using `clickbait:lang`, accessible state, real SVG flags, matched dictionaries, and translated core navigation and homepage content.
+- Rebuilt mobile navigation as a swipeable bottom sheet and added immediate adaptive booking plus expandable quick actions.
+- Replaced the route loader and cursor implementations, added motion-safe split text, and supplied safe video and audio-visualizer fallbacks.
+- Added canonical route metadata, dynamic Open Graph images, hreflang, breadcrumbs, sitemap priorities, and verified structured data.
+- Added Vercel Analytics, Speed Insights, Web Vitals development logging, bundle analysis, Lighthouse configuration, and pull-request CI coverage.
+- Added an installable manifest, app icons, offline fallback, conservative same-origin service worker, and delayed install prompt.
+- Added accessibility controls, multi-destination skip links, live announcements, and an accessibility-support page.
+- Added focused contracts for localization parity, unsupported claims, touch sizing, semantic colors, raw image usage, route SEO, offline safety, and mobile gesture behavior.
+
 ### Added
 - TODO.md: 15 execution items ranked P0/P1/P2 for moving the site from functional to award-contending. Items cover cinematic hero, room storytelling, motion choreography, mobile booking control, visual identity system, portfolio media, service workflow, program narrative, social proof, contact conversion, animated navigation, kinetic typography, page transitions, visual regression testing, and production-readiness proof. #2026-07-29
 
