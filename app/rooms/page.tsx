@@ -4,6 +4,7 @@ import { BOOKING_URL, externalLinkProps } from "@/lib/routes";
 import { metadataFor } from "@/lib/seo";
 import { PageText } from "@/components/i18n/PageText";
 import { TranslatedText } from "@/components/i18n/TranslatedText";
+import { WindowChrome } from "@/components/ui/WindowChrome";
 
 export const metadata = metadataFor("/rooms");
 
@@ -20,16 +21,9 @@ export default function RoomsPage() {
         {rooms.map((room) => (
           <article
             key={room.name}
-            className="studio-card relative overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-8 shadow-[0_8px_24px_rgba(0,0,0,0.22)]"
+            className="studio-card relative overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-8 pt-12 shadow-[0_8px_24px_rgba(0,0,0,0.22)]"
           >
-            <div
-              className="absolute inset-x-0 top-0 flex h-1.5 items-center justify-end gap-0.5 border-b border-[#c0c0c0]/10 bg-[#c0c0c0]/[0.06] px-1.5"
-              aria-hidden="true"
-            >
-              <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-              <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-              <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-            </div>
+            <WindowChrome inset />
             <p className="mb-2 text-xs uppercase tracking-widest text-muted">
               <TranslatedText textKey={room.name === "A Room" ? "home.room.a.name" : "home.room.b.name"} fallback={room.name} />
             </p>

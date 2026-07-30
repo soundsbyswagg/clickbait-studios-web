@@ -11,6 +11,7 @@ import {
   TranslatedText,
 } from "@/components/i18n/TranslatedText";
 import { analyticsEvents } from "@/lib/analytics";
+import { WindowChrome } from "@/components/ui/WindowChrome";
 
 export const metadata = metadataFor("/");
 
@@ -74,14 +75,10 @@ export default function Home() {
             className="relative mt-6 ml-auto w-full max-w-56 overflow-hidden rounded-lg border border-border bg-card shadow-lg"
             aria-labelledby="session-status-title"
           >
-            <div className="flex h-6 items-center justify-between border-b border-border/60 bg-card px-2.5 text-[10px] leading-none tracking-wide text-muted">
-              <span id="session-status-title"><TranslatedText textKey="home.status" fallback="Session Status" /></span>
-              <span className="flex gap-1" aria-hidden="true">
-                <span className="h-2 w-2 rounded-[2px] border border-border/80 bg-border/20" />
-                <span className="h-2 w-2 rounded-[2px] border border-border/80 bg-border/20" />
-                <span className="h-2 w-2 rounded-[2px] border border-border/80 bg-border/20" />
-              </span>
-            </div>
+            <WindowChrome
+              title={<TranslatedText textKey="home.status" fallback="Session Status" />}
+              titleId="session-status-title"
+            />
             <p className="p-4 text-xs text-muted/70">
               <TranslatedText textKey="home.status.available" fallback="Advance booking available" />
             </p>
@@ -127,16 +124,9 @@ export default function Home() {
           {rooms.map((room) => (
             <article
               key={room.name}
-              className="studio-card relative overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-6 shadow-[0_8px_24px_rgba(0,0,0,0.22)] md:p-7"
+              className="studio-card relative overflow-hidden rounded-lg border border-[#c0c0c0]/40 bg-card p-6 pt-10 shadow-[0_8px_24px_rgba(0,0,0,0.22)] md:p-7 md:pt-11"
             >
-              <div
-                className="absolute inset-x-0 top-0 flex h-1.5 items-center justify-end gap-0.5 border-b border-[#c0c0c0]/10 bg-[#c0c0c0]/[0.06] px-1.5"
-                aria-hidden="true"
-              >
-                <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-                <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-                <span className="h-1 w-1 rounded-[1px] border border-[#c0c0c0]/30" />
-              </div>
+              <WindowChrome inset />
               <p className="mb-2 text-xs uppercase tracking-widest text-muted">
                 <TranslatedText textKey={room.name === "A Room" ? "home.room.a.name" : "home.room.b.name"} fallback={room.name} />
               </p>
