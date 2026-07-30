@@ -15,6 +15,9 @@ export default defineConfig({
     baseURL,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
+    launchOptions: productionVerification
+      ? { args: ['--disable-blink-features=AutomationControlled'] }
+      : undefined,
   },
   projects: [
     { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'] } },
